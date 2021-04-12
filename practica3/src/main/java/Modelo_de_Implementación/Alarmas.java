@@ -5,7 +5,7 @@
 package Modelo_de_Implementación;
 
 import java.util.*;
-
+//prueba2
 public class Alarmas
 {
 	private int INTERVALO_SONAR;
