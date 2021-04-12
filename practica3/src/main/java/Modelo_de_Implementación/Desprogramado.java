@@ -2,13 +2,14 @@
  * @(#) Desprogramado.java
  */
 
-package modelo_de_Implementacion_P3;
+package Modelo_de_Implementación;
 
+import java.util.*;
 
 
 public class Desprogramado extends AlarmasEstado
 {
-	public void nuevaAlarma( String id, date hora, Alarma contexto )
+	public void nuevaAlarma( String id, Date hora, Alarma contexto )
 	{
 		
 	}

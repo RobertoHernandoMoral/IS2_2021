@@ -2,7 +2,9 @@
  * @(#) Alarmas.java
  */
 
-package modelo_de_Implementacion_P3;
+package Modelo_de_Implementación;
+
+import java.util.*;
 
 public class Alarmas
 {
@@ -65,7 +67,7 @@ public class Alarmas
 		
 	}
 	
-	public void nuevaAlarma( String id, date hora, Alarmas contexto )
+	public void nuevaAlarma( String id, Date hora, Alarmas contexto )
 	{
 		
 	}

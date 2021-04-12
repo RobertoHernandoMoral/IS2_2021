@@ -1,13 +1,17 @@
+package Modelo_de_Implementación;
+
+
 /**
  * @(#) Alarma.java
  */
 
-package modelo_de_Implementacion_P3;
+import java.util.*;
 
 public class Alarma
 {
 	private String id;
-	private date hora;
+	
+	private Date hora;
 	
 	
 }
