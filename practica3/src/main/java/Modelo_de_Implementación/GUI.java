@@ -30,14 +30,15 @@ public class GUI {
 
 
 	/**
-	 * Launch the application.
+	 * Metodo main que lanza la ventana principal de la GUI
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
 				try {
-					GUI window = new GUI();
-					window.frame.setVisible(true);
+					GUI ventana = new GUI();
+					ventana.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,112 +46,121 @@ public class GUI {
 		});
 	}
 
+	
+	
 	/**
-	 * Create the application.
+	 * Crea la aplicacion
 	 */
 	public GUI() {
-		initialize();
+		arrancar();
 	}
 
+	
+	
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicia los datos
 	 */
-	private void initialize() {
+	private void arrancar() {
+		
+		//Inicia el panel principal
 		frame = new JFrame();
+		
 		frame.setBounds(150, 150, 500, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
 		frame.getContentPane().setLayout(null);
 
+		//Panel de texto
 		JPanel panel = new JPanel();
+		
 		panel.setBounds(0, 0, 197, 261);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblID = new JLabel("ID ALARMA");
-		lblID.setBounds(25, 23, 46, 14);
-		panel.add(lblID);
+		
+		
+		//Etiquita de la ID
+		JLabel lblId = new JLabel("ID ALARMA");
+		
+		lblId.setBounds(25, 23, 46, 14);
+		panel.add(lblId);
+		
 
+		//Cuadro de texto para la id
 		textID = new JTextField();
-		textID.setBounds(93, 20, 86, 20);
+		
+		textID.setBounds(87, 18, 87, 21);
 		panel.add(textID);
-		textID.setColumns(10);
+		textID.setColumns(12);
 
+		//Etiqueta de la alarma
 		JLabel lblAlarma = new JLabel("HORA DE ALARMA");
-		lblAlarma.setBounds(25, 54, 72, 14);
+		
+		lblAlarma.setBounds(28, 53, 71, 16);
 		panel.add(lblAlarma);
 
+		//Boton de nueva alarma
 		JButton btnNuevaAlarma = new JButton("NUEVA ALARMA");
+		
 		btnNuevaAlarma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//alarmas.anhadeAlarma(new Alarma(id, date))
 			}
 		});
 		btnNuevaAlarma.setBounds(35, 80, 133, 23);
 		panel.add(btnNuevaAlarma);
 
+		//Boton de apagado de la alarma
 		JButton btnApagar = new JButton("APAGAR ALARMA");
+		
 		btnApagar.setBounds(28, 125, 140, 42);
 		panel.add(btnApagar);
 
+		
 		Date date = new Date();
-		SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+		
+		/*SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
 		final JSpinner spinner = new JSpinner();
 		spinner.setBounds(93, 51, 104, 20);
 		JSpinner.DateEditor de = new JSpinner.DateEditor(spinner, "hh:mm");
 		spinner.setEditor(de);
-		panel.add(spinner);
+		panel.add(spinner);*/
 
+		//Etique de alarmas activas
 		JLabel lblAlarmasActivas = new JLabel("Alarmas Activas");
-		lblAlarmasActivas.setBounds(276, 11, 113, 21);
+		
+		lblAlarmasActivas.setBounds(275, 10, 117, 24);
 		frame.getContentPane().add(lblAlarmasActivas);
 
+		//Etique de alarmas desactivas
 		JLabel lblAlarmasDesactivadas = new JLabel("Alarmas Desactivas");
-		lblAlarmasDesactivadas.setBounds(276, 101, 113, 21);
+		
+		lblAlarmasDesactivadas.setBounds(275, 10, 117, 24);
 		frame.getContentPane().add(lblAlarmasDesactivadas);
 
-		JTextPane textpnActivadas = new JTextPane();
-		textpnActivadas.setEditable(false);
-		textpnActivadas.setBounds(276, 32, 113, 62);
-		frame.getContentPane().add(textpnActivadas);
+		//Cuadro de texto con las alarmas activas
+		JTextPane textpnActivas = new JTextPane();
+		
+		textpnActivas.setEditable(false);
+		textpnActivas.setBounds(265, 30, 100, 60);
+		frame.getContentPane().add(textpnActivas);
 
+		//Cuadro de texto con las alarmasa inactivas
 		final JTextPane textpndesactivadas = new JTextPane();
+		
 		textpndesactivadas.setEditable(false);
-		textpndesactivadas.setBounds(276, 122, 113, 62);
+		textpndesactivadas.setBounds(265, 30, 100, 60);
 		frame.getContentPane().add(textpndesactivadas);
-
+		
+		//Boton de activar alarma
 		JButton btnOn = new JButton("ON");
 		btnOn.setBounds(276, 195, 60, 20);
 		frame.getContentPane().add(btnOn);
 		btnOn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String id = textID.getSelectedText();
-
-				int J1 = textID.getSelectionStart();
-				int J2 = textID.getSelectedText().length();
-				DocumentListener listener = new DocumentListener() {
-
-					public void removeUpdate(DocumentEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					public void insertUpdate(DocumentEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					public void changedUpdate(DocumentEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-				};
-
-				textID.getDocument().addDocumentListener(listener);
-
-
-				alarmas.alarmaOff(id);
-				System.out.println("Alarma en off");
+				
+				System.out.println("Alarma en ON");
 
 				try {
 					//textpndesactivadas.insertString(textpndesactivadas.getLength, id + "\n", null);
@@ -160,30 +170,13 @@ public class GUI {
 			}
 		});
 
+		//Boton para desactivar la alarma
 		JButton btnOff = new JButton("OFF");
 		btnOff.setBounds(346, 195, 60, 21);
 		frame.getContentPane().add(btnOff);
 		btnOff.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				String id = textID.getSelectedText();
-
-				int J1 = textID.getSelectionStart();
-				int J2 = textID.getSelectedText().length();
-
-				try {
-					textID.getDocument().remove(J1, J2);
-
-				} catch (BadLocationException e2) {
-					e2.printStackTrace();
-				}
-				alarmas.alarmaOff(id);
-				System.out.println("Alarma en off");
-
-				try {
-					//textpndesactivadas.insertString(textpndesactivadas.getLength(), id + "\n", null);
-				} catch (Exception e1) {
-					System.out.println(e1);
-				}
+				//
 			}
 		});
 
@@ -192,28 +185,6 @@ public class GUI {
 		btnEliminar.setBounds(286, 226, 113, 23);
 		frame.getContentPane().add(btnEliminar);
 
-
-		//Nueva Alarma
-		//		btnNuevaAlarma.addActionListener(new ActionListener() {
-		//			public void actionPerformed(ActionEvent e) {
-		//			}
-		//		});
-		//		btnNuevaAlarma.addMouseListener(new MouseAdapter() {
-		//			@SuppressWarnings("deprecation")
-		//			public void mouseClicked(ActionEvent e) {
-		//				String id = textID.getText();
-		//				Date date = (Date)spinner.getValue();
-		//				Calendar calendar = Calendar.getInstance();
-		//				calendar.set(Calendar.HOUR, date.getHours() -12);
-		//				calendar.set(Calendar.MINUTE, date.getMinutes());
-		//				date = calendar.getTime();
-		//				if (alarmas.size() > 0) {
-		//					if (alarmas.busca) {
-		//					}
-		//				}
-		//			});
-		//
-		//		}
 
 	}
 }
