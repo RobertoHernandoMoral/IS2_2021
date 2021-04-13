@@ -11,7 +11,7 @@ public class Alarmas
 {
 	public static class idYaExistente extends RuntimeException{}
 	public static class noExisteLaAlarmaABorrar extends RuntimeException{}
-	private PriorityQueue<Alarma> alarmasActivas = new PriorityQueue<Alarma>();
+	private PriorityQueue<Alarma> alarmasActivas = new PriorityQueue<Alarma>(30, new ComparadorAlarmas());
 	private ArrayList<Alarma> alarmasDesactivas = new ArrayList<Alarma>();
 	private AlarmasEstado estado;
 	private int INTERVALO_SONAR;
@@ -271,5 +271,12 @@ public class Alarmas
 	 */
 	public int getINTERVALO_SONAR() {
 		return INTERVALO_SONAR;
+	}
+	/**
+	 * Metodo observador del atributo estado
+	 * @return estado
+	 */
+	public AlarmasEstado getEstado() {
+		return estado;
 	}
 }
