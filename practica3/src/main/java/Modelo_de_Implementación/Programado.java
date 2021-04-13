@@ -6,6 +6,11 @@ package Modelo_de_Implementación;
 
 import java.util.*;
 
+/**
+*
+* @author Roberto Hernando y Eduardo Llamosas
+*
+*/
 public class Programado extends AlarmasEstado
 {	
 	

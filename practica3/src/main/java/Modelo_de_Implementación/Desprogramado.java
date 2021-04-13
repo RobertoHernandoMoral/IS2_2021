@@ -8,7 +8,8 @@ import java.util.*;
 
 /**
  * Clase que programa el estado "Desprogramado" del contexto "Alarmas"
- * @author edull
+ * 
+ * @author Roberto Hernando y Eduardo Llamosas
  *
  */
 public class Desprogramado extends AlarmasEstado
