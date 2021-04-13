@@ -11,9 +11,9 @@ public class Alarmas
 {
 	public static class idYaExistente extends RuntimeException{}
 	public static class noExisteLaAlarmaABorrar extends RuntimeException{}
-	private ArrayList<Alarma> alarmasActivas = new ArrayList<Alarma>();
+	private PriorityQueue<Alarma> alarmasActivas = new PriorityQueue<Alarma>();
 	private ArrayList<Alarma> alarmasDesactivas = new ArrayList<Alarma>();
-	
+	private AlarmasEstado estado;
 	private int INTERVALO_SONAR;
 	
 	/*private Alarma alarmasDesactivas;*/
@@ -121,7 +121,7 @@ public class Alarmas
 	 * Metodo observador de la lista alarmasActivas
 	 * @return alarmasActivas
 	 */
-	public ArrayList<Alarma> alarmasActivas( )
+	public PriorityQueue<Alarma> alarmasActivas( )
 	{
 		return alarmasActivas;
 	}
@@ -154,7 +154,7 @@ public class Alarmas
 	  * @param date - Fecha de la alarma
 	  * @param contexto
 	  */
-	public void nuevaAlarma( String id, Date date, Alarmas contexto ) throws idYaExistente
+	public void nuevaAlarma( String id, Date date) throws idYaExistente
 	{
 		
 		
@@ -186,7 +186,7 @@ public class Alarmas
 	 * @param id - String que indica la id de la alarma a borrar
 	 * @param contexto
 	 */
-	public void borraAlarma( String id, Alarmas contexto ) throws noExisteLaAlarmaABorrar
+	public void borraAlarma( String id) throws noExisteLaAlarmaABorrar
 	{
 		boolean borrado= false;
 		for(Alarma o: alarmasActivas) {
@@ -208,19 +208,23 @@ public class Alarmas
 		
 	}
 	
-	public void alarmaOn( String id, Alarmas contexto )
+	public void alarmaOn( String id)
 	{
 		//TODO
 	}
 	
-	public void alarmaOff( String id, Alarmas contexto )
+	public void alarmaOff( String id)
 	{
 		//TODO
 	}
 	
-	public void apagar( Alarmas contexto )
+	public void apagar()
 	{
 		//TODO
+	}
+	
+	public void setEstado(AlarmasEstado estado) {
+		this.estado=estado;
 	}
 	
 	
@@ -260,5 +264,12 @@ public class Alarmas
 			}
 		}
 		return null;
+	}
+	/**
+	 * Metodo observador del atributo INTERVALO_SONAR
+	 * @return INTERVALO_SONAR
+	 */
+	public int getINTERALO_SONAR() {
+		return INTERVALO_SONAR;
 	}
 }

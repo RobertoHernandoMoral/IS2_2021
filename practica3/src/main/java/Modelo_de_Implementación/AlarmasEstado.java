@@ -26,7 +26,7 @@ public abstract class AlarmasEstado
 	public void doAction (Alarmas contexto) {};
 	
 	public static AlarmasEstado crear (Alarma contexto) {
-		//estadoDesprogramado.entryAction(context);
+	
 		return desprogramado;
 	}
 	
