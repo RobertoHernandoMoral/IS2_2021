@@ -75,7 +75,7 @@ public class Alarmas
 	public Alarma alarmaMasProxima( )				
 	{
 
-		Alarma aux= new Alarma("aux", new Date(Integer.MAX_VALUE, 12, 31)); 		//elemento auxiliar
+		/*Alarma aux= new Alarma("aux", new Date(Integer.MAX_VALUE, 12, 31)); 		//elemento auxiliar
 		Alarma proximaAlarma= aux; //elemento auxiliar que guarda la alarma mas proxima en cada vuelta del bucle
 		
 		//recorrido de la lista en busca de la alarma con el date más bajo
@@ -87,9 +87,9 @@ public class Alarmas
 		//Si no ha encontrado ninguna más proxima que la mas lejana posible, retorna null
 		if(proximaAlarma.equals(aux)) {
 			return null;
-		}
+		}*/
 		
-		return proximaAlarma;
+		return alarmasActivas.peek();
 	}
 	
 	
