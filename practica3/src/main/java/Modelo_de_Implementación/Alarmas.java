@@ -269,7 +269,7 @@ public class Alarmas
 	 * Metodo observador del atributo INTERVALO_SONAR
 	 * @return INTERVALO_SONAR
 	 */
-	public int getINTERALO_SONAR() {
+	public int getINTERVALO_SONAR() {
 		return INTERVALO_SONAR;
 	}
 }
