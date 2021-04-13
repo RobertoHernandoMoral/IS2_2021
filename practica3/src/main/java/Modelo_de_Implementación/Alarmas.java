@@ -9,7 +9,8 @@ import java.util.*;
 //prueba4
 public class Alarmas
 {
-	
+	public static class idYaExistente extends RuntimeException{}
+	public static class noExisteLaAlarmaABorrar extends RuntimeException{}
 	private ArrayList<Alarma> alarmasActivas = new ArrayList<Alarma>();
 	private ArrayList<Alarma> alarmasDesactivas = new ArrayList<Alarma>();
 	
@@ -145,13 +146,15 @@ public class Alarmas
 		//TODO
 	}
 	
+
+	
 	 /**
 	  * Crea una alarma y la activa por defecto
 	  * @param id - String que indica la id de la alarma a crear
 	  * @param date - Fecha de la alarma
 	  * @param contexto
 	  */
-	public void nuevaAlarma( String id, Date date, Alarmas contexto )
+	public void nuevaAlarma( String id, Date date, Alarmas contexto ) throws idYaExistente
 	{
 		
 		
@@ -172,7 +175,7 @@ public class Alarmas
 			Alarma alarma= new Alarma(id, date);
 			alarmasActivas.add(alarma);
 		}else {
-			//TODO
+			throw new idYaExistente();
 		}
 	
 		
@@ -183,7 +186,7 @@ public class Alarmas
 	 * @param id - String que indica la id de la alarma a borrar
 	 * @param contexto
 	 */
-	public void borraAlarma( String id, Alarmas contexto )
+	public void borraAlarma( String id, Alarmas contexto ) throws noExisteLaAlarmaABorrar
 	{
 		boolean borrado= false;
 		for(Alarma o: alarmasActivas) {
@@ -200,7 +203,7 @@ public class Alarmas
 			}
 		}
 		if(!borrado) {
-			//TODO
+			throw new noExisteLaAlarmaABorrar();
 		}
 		
 	}
