@@ -21,7 +21,7 @@ public class RemindTask extends TimerTask {
 
 	@Override
 	public void run() {
-		contexto.apagar(contexto);
+		contexto.apagar();
 
 	}
 

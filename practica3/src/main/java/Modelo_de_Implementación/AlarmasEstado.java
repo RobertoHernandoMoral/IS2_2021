@@ -13,14 +13,7 @@ public abstract class AlarmasEstado
 	public static Programado programado = new Programado();
 	public static Desprogramado desprogramado = new Desprogramado();
 	public static Sonando sonando = new Sonando();
-	/*
-	//Metodos abstractos para programar en las clases hijas
-	public void nuevaAlarma( String id, Date hora, Alarma contexto ) {};
-	public void borraAlarma( String id, Alarmas contexto ) {};
-	public void alarmaOn( String id, Alarmas contexto ) {};
-	public void alarmaOff( String id, Alarmas contexto ) {};
-	public void apagar( Alarmas contexto ) {};
-	*/
+	
 	public void entryAction (Alarmas contexto) {};
 	public void exitAction (Alarmas contexto) {};
 	public void doAction (Alarmas contexto) {};
@@ -39,9 +32,8 @@ public abstract class AlarmasEstado
 	}
 	
 	
+	//Metodos para las clases hijas:
 	
-	
-	//Metodos abstractos para programar en las clases hijas
 	public void nuevaAlarma( String id, Date hora, Alarma contexto )
 	{
 		

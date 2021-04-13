@@ -37,6 +37,10 @@ public class Desprogramado extends AlarmasEstado
 		if (a != null) {
 			contexto.activaAlarma(a);
 		}
+		contexto.getEstado().exitAction(contexto);
+		contexto.setEstado(programado);
+		contexto.getEstado().entryAction(contexto);
+		contexto.getEstado().doAction(contexto);
 	}
 	
 	/**

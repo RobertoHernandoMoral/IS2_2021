@@ -56,6 +56,10 @@ public class Programado extends AlarmasEstado
 		if (a != null) {
 			contexto.activaAlarma(a);
 		}
+		contexto.getEstado().exitAction(contexto);
+		contexto.setEstado(programado);
+		contexto.getEstado().entryAction(contexto);
+		contexto.getEstado().doAction(contexto);
 	}
 	/**
 	 * Desctiva una alarma
@@ -66,6 +70,10 @@ public class Programado extends AlarmasEstado
 		if (a != null) {
 			contexto.desactivaAlarma(a);
 		}
+		contexto.getEstado().exitAction(contexto);
+		contexto.setEstado(desprogramado);;
+		contexto.getEstado().entryAction(contexto);
+		contexto.getEstado().doAction(contexto);
 	}
 	
 	
