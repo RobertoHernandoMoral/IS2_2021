@@ -7,7 +7,8 @@ package Modelo_de_Implementación;
 import java.util.*;
 
 public class Programado extends AlarmasEstado
-{
+{	
+	
 	public void nuevaAlarma( String id, Date hora, Alarmas contexto )
 	{
 		Alarma a = new Alarma(id, hora);
@@ -43,7 +44,7 @@ public class Programado extends AlarmasEstado
 	
 	public void alarmaOff( String id, Alarmas contexto )
 	{
-		Alarma a = contexto.buscaIdAlarmaDesactiva(id);
+		Alarma a = contexto.buscaIdAlarmaActiva(id);
 		if (a != null) {
 			contexto.desactivaAlarma(a);
 		}

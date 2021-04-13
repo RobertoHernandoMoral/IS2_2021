@@ -40,11 +40,13 @@ public class Alarmas
 	
 	//si existe la alarma elimina y devuelve true, sino false
 	public boolean eliminaAlarma( Alarma a )
-	{
+	{	
+		//busca en alarmas activadas
 		if (buscaIdAlarmaActiva(a.getId()) == a) {
 			alarmasActivas.remove(a);
 			return true;
 		}
+		//busca en alarmas desactivadas
 		else if (buscaIdAlarmaDesactiva(a.getId()) == a) {
 			alarmasDesactivadas.remove(a);
 			return true;
@@ -55,8 +57,8 @@ public class Alarmas
 		
 	}
 	
-	//CREO QUE DEBERIA DE SER UNA COLA
-	public Alarma alarmaMasProxima( )
+	
+	public Alarma alarmaMasProxima( )				//HACER CON EL DATE
 	{
 		//return alarmasActivas.peek;
 		return null;
