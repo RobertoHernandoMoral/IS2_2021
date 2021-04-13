@@ -45,6 +45,12 @@ public class Programado extends AlarmasEstado
 					}
 					
 				}
+				if (contexto.alarmasActivas() == null ) {
+					contexto.getEstado().exitAction(contexto);
+					contexto.setEstado(desprogramado);;
+					contexto.getEstado().entryAction(contexto);
+					contexto.getEstado().doAction(contexto);
+				}
 	}
 	
 	/**
@@ -56,11 +62,9 @@ public class Programado extends AlarmasEstado
 		if (a != null) {
 			contexto.activaAlarma(a);
 		}
-		contexto.getEstado().exitAction(contexto);
-		contexto.setEstado(programado);
-		contexto.getEstado().entryAction(contexto);
-		contexto.getEstado().doAction(contexto);
 	}
+	
+	
 	/**
 	 * Desctiva una alarma
 	 */
