@@ -4,9 +4,14 @@ import java.util.Comparator;
 
 /**
  * Clase que sirve de comparador para la priority queue en base a el atributo date de alarmas
- * @author edull
+ * 
  *
  */
+/**
+*
+* @author Roberto Hernando y Eduardo Llamosas
+*
+*/
 public class ComparadorAlarmas implements Comparator<Alarma>{
     
     // Overriding compare()method of Comparator 

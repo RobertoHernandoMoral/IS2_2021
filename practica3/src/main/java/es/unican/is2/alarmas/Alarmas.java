@@ -1,7 +1,11 @@
 /**
  * @(#) Alarmas.java
  */
-
+/**
+*
+* @author Roberto Hernando y Eduardo Llamosas
+*
+*/
 package es.unican.is2.alarmas;
 
 import java.util.*;

@@ -7,7 +7,11 @@ package es.unican.is2.alarmas;
 
 //prueba3
 //prueba5
-
+/**
+*
+* @author Roberto Hernando y Eduardo Llamosas
+*
+*/
 import java.util.*;
 
 public class Alarma
