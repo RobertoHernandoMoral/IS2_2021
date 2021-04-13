@@ -16,12 +16,16 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SpinnerDateModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
 public class GUI {
 
 	private JFrame frame;
+
 	private JTextField textID;
+
 	private Alarmas alarmas = new Alarmas();
 
 
@@ -53,7 +57,7 @@ public class GUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(150, 150, 500, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
 		frame.getContentPane().setLayout(null);
@@ -63,7 +67,7 @@ public class GUI {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblID = new JLabel("Id Alarma");
+		JLabel lblID = new JLabel("ID ALARMA");
 		lblID.setBounds(25, 23, 46, 14);
 		panel.add(lblID);
 
@@ -72,11 +76,11 @@ public class GUI {
 		panel.add(textID);
 		textID.setColumns(10);
 
-		JLabel lblAlarma = new JLabel("Hora Alarma");
+		JLabel lblAlarma = new JLabel("HORA DE ALARMA");
 		lblAlarma.setBounds(25, 54, 72, 14);
 		panel.add(lblAlarma);
 
-		JButton btnNuevaAlarma = new JButton("Nueva Alarma");
+		JButton btnNuevaAlarma = new JButton("NUEVA ALARMA");
 		btnNuevaAlarma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -84,7 +88,7 @@ public class GUI {
 		btnNuevaAlarma.setBounds(35, 80, 133, 23);
 		panel.add(btnNuevaAlarma);
 
-		JButton btnApagar = new JButton("¡APAGAR!");
+		JButton btnApagar = new JButton("APAGAR ALARMA");
 		btnApagar.setBounds(28, 125, 140, 42);
 		panel.add(btnApagar);
 
@@ -100,7 +104,7 @@ public class GUI {
 		lblAlarmasActivas.setBounds(276, 11, 113, 21);
 		frame.getContentPane().add(lblAlarmasActivas);
 
-		JLabel lblAlarmasDesactivadas = new JLabel("Alarmas desactivadas");
+		JLabel lblAlarmasDesactivadas = new JLabel("Alarmas Desactivas");
 		lblAlarmasDesactivadas.setBounds(276, 101, 113, 21);
 		frame.getContentPane().add(lblAlarmasDesactivadas);
 
@@ -124,15 +128,29 @@ public class GUI {
 
 				int J1 = textID.getSelectionStart();
 				int J2 = textID.getSelectedText().length();
+				DocumentListener listener = new DocumentListener() {
 
-				try {
-					textID.getDocument().addDocumentListener(listener);
+					public void removeUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
 
-				} catch (BadLocationException e2) {
-					e2.printStackTrace();
-				}
+					}
+
+					public void insertUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+
+					public void changedUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+
+					}
+				};
+
+				textID.getDocument().addDocumentListener(listener);
+
+
 				alarmas.alarmaOff(id);
-				System.out.println("Borramos la alarma");
+				System.out.println("Alarma en off");
 
 				try {
 					//textpndesactivadas.insertString(textpndesactivadas.getLength, id + "\n", null);
@@ -159,7 +177,7 @@ public class GUI {
 					e2.printStackTrace();
 				}
 				alarmas.alarmaOff(id);
-				System.out.println("Borramos la alarma");
+				System.out.println("Alarma en off");
 
 				try {
 					//textpndesactivadas.insertString(textpndesactivadas.getLength(), id + "\n", null);
@@ -170,7 +188,7 @@ public class GUI {
 		});
 
 
-		JButton btnEliminar = new JButton("ELIMINAR");
+		JButton btnEliminar = new JButton("ELIMINAR ALARMA");
 		btnEliminar.setBounds(286, 226, 113, 23);
 		frame.getContentPane().add(btnEliminar);
 
