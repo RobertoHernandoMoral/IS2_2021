@@ -6,9 +6,19 @@ package Modelo_de_Implementación;
 
 import java.util.*;
 
-
+/**
+ * Clase que programa el estado "Desprogramado" del contexto "Alarmas"
+ * @author edull
+ *
+ */
 public class Desprogramado extends AlarmasEstado
 {
+	/**
+	 * Crea una nueva alarma en el contexto
+	 * @param id
+	 * @param hora
+	 * @param contexto
+	 */
 	public void nuevaAlarma( String id, Date hora, Alarmas contexto )
 	{
 		Alarma a = new Alarma(id, hora);
@@ -17,6 +27,9 @@ public class Desprogramado extends AlarmasEstado
 		}
 	}
 	
+	/**
+	 * Activa una alarma de la lista de desactivas
+	 */
 	public void alarmaOn( String id, Alarmas contexto )
 	{	
 		Alarma a = contexto.buscaIdAlarmaDesactiva(id);
@@ -25,6 +38,9 @@ public class Desprogramado extends AlarmasEstado
 		}
 	}
 	
+	/**
+	 * Borra una alarma de la lista de desactivas
+	 */
 	public void borraAlarma( String id, Alarmas contexto )
 	{	
 		//busca la alarma en las alarmas descativadas

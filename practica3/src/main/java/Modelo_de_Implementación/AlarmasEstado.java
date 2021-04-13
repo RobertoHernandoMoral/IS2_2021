@@ -39,7 +39,6 @@ public abstract class AlarmasEstado
 	}
 	
 	
-	/*private Modelo_de_Implementación.Alarmas estado;*/
 	
 	
 	//Metodos abstractos para programar en las clases hijas

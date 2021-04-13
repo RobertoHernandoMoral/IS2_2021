@@ -9,6 +9,12 @@ import java.util.*;
 public class Programado extends AlarmasEstado
 {	
 	
+	/**
+	 * Anhade una alarma 
+	 * @param id
+	 * @param hora
+	 * @param contexto
+	 */
 	public void nuevaAlarma( String id, Date hora, Alarmas contexto )
 	{
 		Alarma a = new Alarma(id, hora);
@@ -16,7 +22,9 @@ public class Programado extends AlarmasEstado
 			contexto.anhadeAlarma(a);
 		}
 	}
-	
+	/**
+	 * Borra una alarma 
+	 */
 	public void borraAlarma( String id, Alarmas contexto )
 	{
 		//busca la alarma en las alarmas descativadas
@@ -34,6 +42,9 @@ public class Programado extends AlarmasEstado
 				}
 	}
 	
+	/**
+	 * Activa una alarma
+	 */
 	public void alarmaOn( String id, Alarmas contexto )
 	{
 		Alarma a = contexto.buscaIdAlarmaDesactiva(id);
@@ -41,7 +52,9 @@ public class Programado extends AlarmasEstado
 			contexto.activaAlarma(a);
 		}
 	}
-	
+	/**
+	 * Desctiva una alarma
+	 */
 	public void alarmaOff( String id, Alarmas contexto )
 	{
 		Alarma a = contexto.buscaIdAlarmaActiva(id);

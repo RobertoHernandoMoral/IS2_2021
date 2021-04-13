@@ -14,21 +14,21 @@ public class Alarma
 {
 	private String id;
 	
-	private Date hora;
+	private Date date;
 	
 	//constructor
-	public Alarma(String id, Date hora) {
+	public Alarma(String id, Date date) {
 		this.id = id;
-		this.hora = hora;
+		this.date = date;
 	}
 	
-	//metodos
+	//observadores
 	public String getId() {
 		return id;
 	}
 
-	public Date getHora() {
-		return hora;
+	public Date getDate() {
+		return date;
 	}
 
 }
