@@ -1,4 +1,4 @@
-package Modelo_de_Implementación;
+package es.unican.is2.alarmas;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;

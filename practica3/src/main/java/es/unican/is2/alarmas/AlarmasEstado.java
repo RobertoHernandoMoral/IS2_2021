@@ -2,7 +2,7 @@
  * @(#) AlarmasEstado.java
  */
 
-package Modelo_de_Implementación;
+package es.unican.is2.alarmas;
 
 import java.util.*;
 
