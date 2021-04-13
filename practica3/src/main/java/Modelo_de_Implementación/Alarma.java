@@ -16,5 +16,19 @@ public class Alarma
 	
 	private Date hora;
 	
+	//constructor
+	public Alarma(String id, Date hora) {
+		this.id = id;
+		this.hora = hora;
+	}
 	
+	//metodos
+	public String getId() {
+		return id;
+	}
+
+	public Date getHora() {
+		return hora;
+	}
+
 }

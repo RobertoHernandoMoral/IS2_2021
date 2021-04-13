@@ -6,35 +6,65 @@ package Modelo_de_Implementación;
 
 import java.util.*;
 
-
-public class AlarmasEstado
+//seria abstracta
+public abstract class AlarmasEstado
 {
-	private Modelo_de_Implementación.Alarmas estado;
+	//Estados de la Alarma
+	public static Programado programado = new Programado();
+	public static Desprogramado desprogramado = new Desprogramado();
+	public static Sonando sonando = new Sonando();
 	
-	public void nuevaAlarma( String id, Date hora, Alarma contexto )
-	{
-		
+	//Metodos abstractos para programar en las clases hijas
+	public void nuevaAlarma( String id, Date hora, Alarma contexto ) {};
+	public void borraAlarma( String id, Alarmas contexto ) {};
+	public void alarmaOn( String id, Alarmas contexto ) {};
+	public void alarmaOff( String id, Alarmas contexto ) {};
+	public void apagar( Alarmas contexto ) {};
+	
+	public void entryAction (Alarmas contexto) {};
+	public void exitAction (Alarmas contexto) {};
+	public void doAction (Alarmas contexto) {};
+	
+	public static AlarmasEstado crear (Alarma contexto) {
+		//estadoDesprogramado.entryAction(context);
+		return desprogramado;
 	}
 	
-	public void borraAlarma( String id, Alarmas contexto )
-	{
-		
+	public static AlarmasEstado getEstadoProgramado () {
+		return programado;
 	}
 	
-	public void alarmaOn( String id, Alarmas contexto )
-	{
-		
+	public static AlarmasEstado getEstadoSonando () {
+		return sonando;
 	}
 	
-	public void alarmaOff( String id, Alarmas contexto )
-	{
-		
-	}
+	/*private Modelo_de_Implementación.Alarmas estado;*/
 	
-	public void apagar( Alarmas contexto )
+	/*public void nuevaAlarma( String id, Date hora, Alarma contexto )
+	{
+		Alarma a = new Alarma(id, hora);
+		
+	}*/
+	
+	/*public void borraAlarma( String id, Alarmas contexto )
 	{
 		
-	}
+	}*/
+	
+	/*public void alarmaOn( String id, Alarmas contexto )
+	{
+		
+	}*/
+	
+	/*public void alarmaOff( String id, Alarmas contexto )
+	{
+		
+	}*/
+	
+	/*public void apagar( Alarmas contexto )
+	{
+		
+	}*/
 	
 	
 }
