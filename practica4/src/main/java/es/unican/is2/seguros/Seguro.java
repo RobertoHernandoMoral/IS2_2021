@@ -23,7 +23,7 @@ public class Seguro {
 	private Cobertura cobertura;
 	
 	private static final double PRECIOBASE_TERCEROS= 400;
-	private static final double PRECIOBASE_TERCEROS_LUNAS= 600;
+	private static final double PRECIOBASE_TERCEROSLUNAS= 600;
 	private static final double PRECIOBASE_TODO_RIESGO= 1000;
 	
 	private static final double PORCENTAJE1= 0.05; //Comprendido entre los rangos de 90 a 100 CV ambos inclusives
@@ -57,12 +57,54 @@ public class Seguro {
 	//metodos
 	public double precio() {
 		
+		double precioBase;
+		double porcentajePotencia;
+		double descuentoMinusvalia;
+		double nivelSiniestralidad;
 		
+		//Asignación del valor base del seguro
 		switch(cobertura){
 		case TERCEROS:
-			
+			precioBase=PRECIOBASE_TERCEROS;
+			break;
+		case TERCEROSLUNAS:
+			precioBase=PRECIOBASE_TERCEROSLUNAS;
+			break;
+		case TODORIESGO:
+			precioBase=PRECIOBASE_TODO_RIESGO;
+			break;
+		default:
+			precioBase=PRECIOBASE_TERCEROS;
+			break;
 		}
-		return 1.1;
+		
+		//Asignacion del porcentaje por potencia del coche
+		if (potenciaCV<90) {
+			porcentajePotencia=1.0;
+		}else if(potenciaCV<=110) {
+			porcentajePotencia=1.0+PORCENTAJE1;
+		}else {
+			porcentajePotencia=1.0+PORCENTAJE2;
+		}
+		
+		//Asignacion de nivel de siniestralidad
+		LocalDate fechaActual= LocalDate.now();
+		if(fechaUltimoSiniestro.isBefore(fechaActual.minusYears(3))) {
+			nivelSiniestralidad= 0.0;
+		}else if(fechaUltimoSiniestro.isBefore(fechaActual.minusYears(1))){
+			nivelSiniestralidad= 50.0;			
+		}else {
+			nivelSiniestralidad=200.0;
+		}
+		
+		//Asignacion de porcentaje de descuento por minusvalia
+		if(tomadorSeguro.isMinusvalia()) {
+			descuentoMinusvalia=1.0-PORCENTAJE_DESCUENTO_MINUSVALIA;
+		} else {
+			descuentoMinusvalia=1.0;
+		}
+		
+		return ((precioBase*porcentajePotencia)+nivelSiniestralidad)*descuentoMinusvalia;
 	}
 
 	/**
