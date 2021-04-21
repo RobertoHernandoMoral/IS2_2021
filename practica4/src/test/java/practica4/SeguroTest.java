@@ -1,31 +1,75 @@
 package practica4;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.junit.*;
 import es.unican.is2.seguros.Cliente;
 import es.unican.is2.seguros.Seguro;
+import es.unican.is2.seguros.Seguro.*;
 
 public class SeguroTest {
-	//@Setup
 	
+	private Cliente cliente;
+	
+	@Before
+	public void setup() {
+		Cliente cliente = new Cliente("pepe", "72088339J", false);
+		
+	}
 	
 	@Test
 	public void testSeguro() {
-		Cliente cliente = new Cliente("pepe", "72088339J", false);
 		
-		assertTrue(new Seguro(0, cliente, Seguro.Cobertura.TERCEROS) != null);
-		assertTrue(new Seguro(10, cliente, Seguro.Cobertura.TERCEROS) != null);
-		assertTrue(new Seguro(110, cliente, Seguro.Cobertura.TERCEROS) != null);
-		assertTrue(new Seguro(120, cliente, Seguro.Cobertura.TERCEROS) != null);
-		/*
+		
+		
+		Seguro s1= new Seguro(10, cliente, Seguro.Cobertura.TERCEROS);
+		assertTrue(s1.getPotenciaCV()==10 && s1.getTomadorSeguro().equals(cliente) && s1.getCobertura()==Seguro.Cobertura.TERCEROS);
+		
+		
+		try {
+			Seguro s = new Seguro(0, null, Seguro.Cobertura.TERCEROS);
+			fail();
+		} catch (PotenciaIncorrectaException e) {
+			System.out.println("Potencia introducida no valida: Valor cero");
+		}
+		
+		try {
+			Seguro s = new Seguro(-180, null, Seguro.Cobertura.TERCEROS);
+			fail();
+			
+		} catch(PotenciaIncorrectaException e){
+			System.out.println("Potencia introducida no valida: Valor negativo");
+		}
+		
 		try {
 			Seguro s = new Seguro(90, null, Seguro.Cobertura.TERCEROS);
 			fail();
-		} catch (s) {}
-		*/
+		} catch (ClienteNoValidoException e) {
+			System.out.println("El cliente proporcionado no es válido");
+		}
 		
-		assertTrue(Double precio > 0);
+		
+		
+		
+	}
+	
+	@Test
+	public void testPrecio() {
+		
+		Seguro s= new Seguro(10, cliente, Seguro.Cobertura.TERCEROS);
+		
+		LocalDate fechaActual = LocalDate.now();
+		//1 o -1?????
+		assertTrue(s.getFechaUltimoSiniestro().compareTo(fechaActual)<=0);
+		
+		assertTrue(s.getFechaUltimoSiniestro()!=null);
+		
+		
+
 		
 	}
 }
