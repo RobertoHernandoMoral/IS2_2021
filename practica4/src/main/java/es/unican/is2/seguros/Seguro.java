@@ -4,19 +4,7 @@ import java.time.LocalDate;
 
 public class Seguro {
 	
-	
-
-	@SuppressWarnings("serial")
-	public static class ClienteNoValidoException extends RuntimeException {
-	}
-	
-	@SuppressWarnings("serial")
-	public static class PotenciaIncorrectaException extends RuntimeException {
-	}
-
-	public enum Cobertura {TERCEROS, TODORIESGO, TERCEROSLUNAS};
-	
-	//atributos
+	//ATRIBUTOS
 	private  LocalDate fechaUltimoSiniestro;
 	private int potenciaCV;
 	private Cliente tomadorSeguro;
@@ -31,19 +19,31 @@ public class Seguro {
 	
 	private static final double PORCENTAJE_DESCUENTO_MINUSVALIA=0.25;
 	
-	private static final double NIVEL_DE_SINIESTRALIDAD1=200.0;
-	private static final double NIVEL_DE_SINIESTRALIDAD2=50.0;
+	private static final double NIVEL_DE_SINIESTRALIDAD1 = 0.0;   //€ que se suman al precio del seguro
+	private static final double NIVEL_DE_SINIESTRALIDAD2 = 50.0;  //€ que se suman al precio del seguro
+	private static final double NIVEL_DE_SINIESTRALIDAD3 = 200.0; //€ que se suman al precio del seguro
+	
+	
+	//EXCEPCIONES
+	@SuppressWarnings("serial")
+	public static class ClienteNoValidoException extends RuntimeException {
+	}
+	
+	@SuppressWarnings("serial")
+	public static class PotenciaIncorrectaException extends RuntimeException {
+	}
+
+	public enum Cobertura {TERCEROS, TODORIESGO, TERCEROSLUNAS};
 	
 	
 	
 	
-	
-	//constructor
+	//CONSTRUCTOR
 	public Seguro(int potencia, Cliente cliente, Cobertura cobertura) throws ClienteNoValidoException, PotenciaIncorrectaException  {
 		if(potencia<=0) {
 			throw new PotenciaIncorrectaException();
 		}
-		if(cliente==null) {
+		if(cliente == null) {
 			throw new ClienteNoValidoException();
 		}
 		
@@ -51,10 +51,13 @@ public class Seguro {
 		this.tomadorSeguro=cliente;
 		this.cobertura=cobertura;
 		
+		//para simular la fecha de un siniestro hace mas de 3 años
+		LocalDate fechaActual = LocalDate.now();
+		this.fechaUltimoSiniestro = fechaActual.minusYears(3);
 	
 	}
 	
-	//metodos
+	//METODOS
 	public double precio() {
 		
 		double precioBase;
@@ -64,18 +67,18 @@ public class Seguro {
 		
 		//Asignación del valor base del seguro
 		switch(cobertura){
-		case TERCEROS:
-			precioBase=PRECIOBASE_TERCEROS;
-			break;
-		case TERCEROSLUNAS:
-			precioBase=PRECIOBASE_TERCEROSLUNAS;
-			break;
-		case TODORIESGO:
-			precioBase=PRECIOBASE_TODO_RIESGO;
-			break;
-		default:
-			precioBase=PRECIOBASE_TERCEROS;
-			break;
+			case TERCEROS:
+				precioBase=PRECIOBASE_TERCEROS;
+				break;
+			case TERCEROSLUNAS:
+				precioBase=PRECIOBASE_TERCEROSLUNAS;
+				break;
+			case TODORIESGO:
+				precioBase=PRECIOBASE_TODO_RIESGO;
+				break;
+			default:
+				precioBase=PRECIOBASE_TERCEROS;
+				break;
 		}
 		
 		//Asignacion del porcentaje por potencia del coche
@@ -88,13 +91,13 @@ public class Seguro {
 		}
 		
 		//Asignacion de nivel de siniestralidad
-		LocalDate fechaActual= LocalDate.now();
+		LocalDate fechaActual = LocalDate.now();
 		if(fechaUltimoSiniestro.isBefore(fechaActual.minusYears(3))) {
-			nivelSiniestralidad= 0.0;
+			nivelSiniestralidad= NIVEL_DE_SINIESTRALIDAD1;
 		}else if(fechaUltimoSiniestro.isBefore(fechaActual.minusYears(1))){
-			nivelSiniestralidad= 50.0;			
+			nivelSiniestralidad= NIVEL_DE_SINIESTRALIDAD2;			
 		}else {
-			nivelSiniestralidad=200.0;
+			nivelSiniestralidad= NIVEL_DE_SINIESTRALIDAD3;
 		}
 		
 		//Asignacion de porcentaje de descuento por minusvalia

@@ -13,11 +13,11 @@ import es.unican.is2.seguros.Seguro.*;
 
 public class SeguroTest {
 	
-	private Cliente cliente;
+	private Cliente cliente = new Cliente("Paco", "72688339J", false);
 	
 	@Before
 	public void setup() {
-		Cliente cliente = new Cliente("pepe", "72088339J", false);
+		Cliente cliente = new Cliente("pepe", "72688339J", false);
 		
 	}
 	
@@ -32,14 +32,14 @@ public class SeguroTest {
 		
 		try {
 			Seguro s = new Seguro(0, null, Seguro.Cobertura.TERCEROS);
-			fail();
+			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
 		} catch (PotenciaIncorrectaException e) {
 			System.out.println("Potencia introducida no valida: Valor cero");
 		}
 		
 		try {
 			Seguro s = new Seguro(-180, null, Seguro.Cobertura.TERCEROS);
-			fail();
+			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
 			
 		} catch(PotenciaIncorrectaException e){
 			System.out.println("Potencia introducida no valida: Valor negativo");
@@ -47,7 +47,7 @@ public class SeguroTest {
 		
 		try {
 			Seguro s = new Seguro(90, null, Seguro.Cobertura.TERCEROS);
-			fail();
+			fail("Deberia de haberse lanzado la excepcion ClienteNoValidoException");
 		} catch (ClienteNoValidoException e) {
 			System.out.println("El cliente proporcionado no es válido");
 		}
