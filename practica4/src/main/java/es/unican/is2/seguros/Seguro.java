@@ -33,7 +33,7 @@ public class Seguro {
 	public static class PotenciaIncorrectaException extends RuntimeException {
 	}
 
-	public enum Cobertura {TERCEROS, TODORIESGO, TERCEROSLUNAS};
+	//public enum Cobertura {TERCEROS, TODORIESGO, TERCEROSLUNAS};
 	
 	
 	
@@ -70,10 +70,10 @@ public class Seguro {
 			case TERCEROS:
 				precioBase=PRECIOBASE_TERCEROS;
 				break;
-			case TERCEROSLUNAS:
+			case TERCEROS_LUNAS:
 				precioBase=PRECIOBASE_TERCEROSLUNAS;
 				break;
-			case TODORIESGO:
+			case TODO_RIESGO:
 				precioBase=PRECIOBASE_TODO_RIESGO;
 				break;
 			default:

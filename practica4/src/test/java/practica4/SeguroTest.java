@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 import org.junit.*;
 import es.unican.is2.seguros.Cliente;
+import es.unican.is2.seguros.Cobertura;
 import es.unican.is2.seguros.Seguro;
 import es.unican.is2.seguros.Seguro.*;
 
@@ -26,19 +27,19 @@ public class SeguroTest {
 		
 		
 		
-		Seguro s1= new Seguro(10, cliente, Seguro.Cobertura.TERCEROS);
-		assertTrue(s1.getPotenciaCV()==10 && s1.getTomadorSeguro().equals(cliente) && s1.getCobertura()==Seguro.Cobertura.TERCEROS);
+		Seguro s1= new Seguro(10, cliente, Cobertura.TERCEROS);
+		assertTrue(s1.getPotenciaCV()==10 && s1.getTomadorSeguro().equals(cliente) && s1.getCobertura()== Cobertura.TERCEROS);
 		
 		
 		try {
-			Seguro s = new Seguro(0, null, Seguro.Cobertura.TERCEROS);
+			Seguro s = new Seguro(0, null, Cobertura.TERCEROS);
 			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
 		} catch (PotenciaIncorrectaException e) {
 			System.out.println("Potencia introducida no valida: Valor cero");
 		}
 		
 		try {
-			Seguro s = new Seguro(-180, null, Seguro.Cobertura.TERCEROS);
+			Seguro s = new Seguro(-180, null, Cobertura.TERCEROS);
 			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
 			
 		} catch(PotenciaIncorrectaException e){
@@ -46,7 +47,7 @@ public class SeguroTest {
 		}
 		
 		try {
-			Seguro s = new Seguro(90, null, Seguro.Cobertura.TERCEROS);
+			Seguro s = new Seguro(90, null, Cobertura.TERCEROS);
 			fail("Deberia de haberse lanzado la excepcion ClienteNoValidoException");
 		} catch (ClienteNoValidoException e) {
 			System.out.println("El cliente proporcionado no es válido");
@@ -60,7 +61,7 @@ public class SeguroTest {
 	@Test
 	public void testPrecio() {
 		
-		Seguro s= new Seguro(10, cliente, Seguro.Cobertura.TERCEROS);
+		Seguro s= new Seguro(10, cliente, Cobertura.TERCEROS);
 		
 		LocalDate fechaActual = LocalDate.now();
 		//1 o -1?????
