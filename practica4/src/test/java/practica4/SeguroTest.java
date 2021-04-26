@@ -76,7 +76,19 @@ public class SeguroTest {
 			System.out.println("El método precio no devuelve un double");
 			fail();
 		}
+		
+		//Caja Blanca
+		
+		//0<potencia<90
+		Seguro s1= new Seguro(50, cliente, Cobertura.TERCEROS);
 
+		//90<potencia<110
+		//110<potencia
+		//simple+lunas
+		//a todo riesgo
+		//minusv=true
+		//siniestro 2 años
+		//siniestro < 1 año
 		
 	}
 }
