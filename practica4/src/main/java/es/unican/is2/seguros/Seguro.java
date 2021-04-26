@@ -25,12 +25,9 @@ public class Seguro {
 	
 	
 	//EXCEPCIONES
+
 	@SuppressWarnings("serial")
-	public static class ClienteNoValidoException extends RuntimeException {
-	}
-	
-	@SuppressWarnings("serial")
-	public static class PotenciaIncorrectaException extends RuntimeException {
+	public static class DatoIncorrectoException extends RuntimeException {
 	}
 
 	//public enum Cobertura {TERCEROS, TODORIESGO, TERCEROSLUNAS};
@@ -39,12 +36,12 @@ public class Seguro {
 	
 	
 	//CONSTRUCTOR
-	public Seguro(int potencia, Cliente cliente, Cobertura cobertura) throws ClienteNoValidoException, PotenciaIncorrectaException  {
+	public Seguro(int potencia, Cliente cliente, Cobertura cobertura) throws  DatoIncorrectoException  {
 		if(potencia<=0) {
-			throw new PotenciaIncorrectaException();
+			throw new DatoIncorrectoException();
 		}
 		if(cliente == null) {
-			throw new ClienteNoValidoException();
+			throw new DatoIncorrectoException();
 		}
 		
 		this.potenciaCV=potencia;

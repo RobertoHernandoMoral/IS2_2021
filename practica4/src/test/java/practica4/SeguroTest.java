@@ -34,7 +34,7 @@ public class SeguroTest {
 		try {
 			Seguro s = new Seguro(0, null, Cobertura.TERCEROS);
 			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
-		} catch (PotenciaIncorrectaException e) {
+		} catch (DatoIncorrectoException e) {
 			System.out.println("Potencia introducida no valida: Valor cero");
 		}
 		
@@ -42,14 +42,14 @@ public class SeguroTest {
 			Seguro s = new Seguro(-180, null, Cobertura.TERCEROS);
 			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
 			
-		} catch(PotenciaIncorrectaException e){
+		} catch(DatoIncorrectoException e){
 			System.out.println("Potencia introducida no valida: Valor negativo");
 		}
 		
 		try {
 			Seguro s = new Seguro(90, null, Cobertura.TERCEROS);
 			fail("Deberia de haberse lanzado la excepcion ClienteNoValidoException");
-		} catch (ClienteNoValidoException e) {
+		} catch (DatoIncorrectoException e) {
 			System.out.println("El cliente proporcionado no es válido");
 		}
 		

@@ -6,10 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import es.unican.is2.seguros.model.Cliente;
-import es.unican.is2.seguros.model.Cobertura;
-import es.unican.is2.seguros.model.DatoIncorrectoException;
-import es.unican.is2.seguros.model.Seguro;
+
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -92,7 +89,7 @@ public class SegurosGUI extends JFrame {
 			    	precio = seguro.precio();
 			    	txtPrecio.setText(Double.toString(precio));
 			    	
-				} catch (DatoIncorrectoException e) {
+				} catch (es.unican.is2.seguros.Seguro.DatoIncorrectoException e) {
 					txtPrecio.setText(Double.toString(precio));
 					
 				} catch (DateTimeParseException e) {
