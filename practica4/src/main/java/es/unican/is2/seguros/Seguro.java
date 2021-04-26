@@ -50,7 +50,7 @@ public class Seguro {
 		
 		//para simular la fecha de un siniestro hace mas de 3 años
 		LocalDate fechaActual = LocalDate.now();
-		this.fechaUltimoSiniestro = fechaActual.minusYears(3);
+		this.fechaUltimoSiniestro = fechaActual.minusYears(100);
 	
 	}
 	

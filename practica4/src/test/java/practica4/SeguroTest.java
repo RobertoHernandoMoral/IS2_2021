@@ -33,14 +33,14 @@ public class SeguroTest {
 		
 		try {
 			Seguro s = new Seguro(0, null, Cobertura.TERCEROS);
-			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
+			fail("Deberia de haberse lanzado la excepcion DatoIncorrectoException");
 		} catch (DatoIncorrectoException e) {
 			System.out.println("Potencia introducida no valida: Valor cero");
 		}
 		
 		try {
 			Seguro s = new Seguro(-180, null, Cobertura.TERCEROS);
-			fail("Deberia de haberse lanzado la excepcion PotenciIncorrectaException");
+			fail("Deberia de haberse lanzado la excepcion DatoIncorrectoException");
 			
 		} catch(DatoIncorrectoException e){
 			System.out.println("Potencia introducida no valida: Valor negativo");
@@ -48,7 +48,7 @@ public class SeguroTest {
 		
 		try {
 			Seguro s = new Seguro(90, null, Cobertura.TERCEROS);
-			fail("Deberia de haberse lanzado la excepcion ClienteNoValidoException");
+			fail("Deberia de haberse lanzado la excepcion DatoIncorrectoException");
 		} catch (DatoIncorrectoException e) {
 			System.out.println("El cliente proporcionado no es válido");
 		}
@@ -69,7 +69,13 @@ public class SeguroTest {
 		
 		assertTrue(s.getFechaUltimoSiniestro()!=null);
 		
-		
+		try{
+			Double.parseDouble(""+s.precio()+"");
+			assertTrue(true);
+		} catch (NumberFormatException e) {
+			System.out.println("El método precio no devuelve un double");
+			fail();
+		}
 
 		
 	}
