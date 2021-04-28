@@ -7,11 +7,10 @@
   <description>Proyecto Maven de la practica 4 de is2</description>
   
   <dependencies>
-  	<!-- REVISAR LA VERSION DE JUNIT -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13</version>
 			<scope>test</scope>
 		</dependency>
 		
