@@ -6,6 +6,8 @@ public class Seguro {
 	
 	//ATRIBUTOS
 	private  LocalDate fechaUltimoSiniestro;
+
+
 	private int potenciaCV;
 	private Cliente tomadorSeguro;
 	private Cobertura cobertura;
@@ -133,6 +135,13 @@ public class Seguro {
 	 */
 	public LocalDate getFechaUltimoSiniestro() {
 		return fechaUltimoSiniestro;
+	}
+
+	/**
+	 * @param fechaUltimoSiniestro the fechaUltimoSiniestro to set
+	 */
+	public void setFechaUltimoSiniestro(LocalDate fechaUltimoSiniestro) {
+		this.fechaUltimoSiniestro = fechaUltimoSiniestro;
 	}
 	
 }

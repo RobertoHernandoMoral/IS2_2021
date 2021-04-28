@@ -81,14 +81,43 @@ public class SeguroTest {
 		
 		//0<potencia<90
 		Seguro s1= new Seguro(50, cliente, Cobertura.TERCEROS);
+		
+		assertTrue(s1.precio()==400.0);
 
 		//90<potencia<110
+		Seguro s2= new Seguro(100, cliente, Cobertura.TERCEROS);
+		
+		assertTrue(s2.precio()==420.0);
 		//110<potencia
+		Seguro s3= new Seguro(120, cliente, Cobertura.TERCEROS);
+		
+		assertTrue(s3.precio()==480.0);
 		//simple+lunas
+		Seguro s4= new Seguro(120, cliente, Cobertura.TERCEROS_LUNAS);
+		
+		assertTrue(s4.precio()==720.0);
 		//a todo riesgo
+		Seguro s5= new Seguro(120, cliente, Cobertura.TODO_RIESGO);
+		
+		assertTrue(s5.precio()==1200.0);
 		//minusv=true
+		Cliente clienteMinus = new Cliente("pepe", "72688339J", true);
+
+		Seguro s6= new Seguro(120, clienteMinus, Cobertura.TERCEROS);
+		
+		assertTrue(s6.precio()==360.0);
 		//siniestro 2 años
+		LocalDate fechaSiniestro= LocalDate.now().minusYears(2).minusMonths(6);
+		
+		Seguro s7= new Seguro(120, cliente, Cobertura.TERCEROS);
+		s7.setFechaUltimoSiniestro(fechaSiniestro);
+		assertTrue(s7.precio()==530.0);
 		//siniestro < 1 año
+		
+		LocalDate fechaSiniestro2= LocalDate.now().minusMonths(6);
+		Seguro s8= new Seguro(120, cliente, Cobertura.TERCEROS);
+		s8.setFechaUltimoSiniestro(fechaSiniestro2);
+		assertTrue(s8.precio()==680.0);
 		
 	}
 }
