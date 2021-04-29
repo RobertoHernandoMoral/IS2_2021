@@ -13,7 +13,7 @@ public class Seguro {
 	private Cobertura cobertura;
 	
 	private static final double PRECIOBASE_TERCEROS= 400;
-	private static final double PRECIOBASE_TERCEROSLUNAS= 600;
+	private static final double PRECIOBASE_TERCEROS_LUNAS= 600;
 	private static final double PRECIOBASE_TODO_RIESGO= 1000;
 	
 	private static final double PORCENTAJE1= 0.05; //Comprendido entre los rangos de 90 a 100 CV ambos inclusives
@@ -70,7 +70,7 @@ public class Seguro {
 				precioBase=PRECIOBASE_TERCEROS;
 				break;
 			case TERCEROS_LUNAS:
-				precioBase=PRECIOBASE_TERCEROSLUNAS;
+				precioBase=PRECIOBASE_TERCEROS_LUNAS;
 				break;
 			case TODO_RIESGO:
 				precioBase=PRECIOBASE_TODO_RIESGO;
@@ -105,7 +105,7 @@ public class Seguro {
 		} else {
 			descuentoMinusvalia=1.0;
 		}
-		
+		 
 		return ((precioBase*porcentajePotencia)+nivelSiniestralidad)*descuentoMinusvalia;
 	}
 

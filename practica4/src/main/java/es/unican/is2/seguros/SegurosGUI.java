@@ -58,7 +58,7 @@ public class SegurosGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtFechaUltimoSiniestro = new JTextField();
-		txtFechaUltimoSiniestro.setText("dd/mm/yyyy");
+		txtFechaUltimoSiniestro.setText("dd-mm-yyyy");
 		txtFechaUltimoSiniestro.setName("txtFechaUltimoSiniestro");
 		txtFechaUltimoSiniestro.setBounds(124, 8, 86, 20);
 		contentPane.add(txtFechaUltimoSiniestro);
@@ -90,7 +90,12 @@ public class SegurosGUI extends JFrame {
 			    	txtPrecio.setText(Double.toString(precio));
 			    	
 				} catch (es.unican.is2.seguros.Seguro.DatoIncorrectoException e) {
-					txtPrecio.setText(Double.toString(precio));
+					if (precio <= 0) {
+						txtPrecio.setText("Potencia incorrecta (potencia <= 0)");
+					}
+					else {
+						txtPrecio.setText(Double.toString(precio));
+					}
 					
 				} catch (DateTimeParseException e) {
 					txtPrecio.setText("La fecha no se pudo parsear");
