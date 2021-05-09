@@ -44,14 +44,6 @@ public class SeguroSGUITest {
 		//////////
 
 		//comprobamos que funciona con el boton minusvalia activado
-		demo.textBox("txtPotencia").deleteText();
-		demo.textBox("txtPotencia").enterText("50");
-
-		demo.textBox("txtFechaUltimoSiniestro").deleteText();
-		demo.textBox("txtFechaUltimoSiniestro").enterText("10-01-2000");
-
-		//el 0 corresponde con TODO_RIESGO
-		demo.comboBox("comboCobertura").selectItem(0);
 
 		demo.radioButton("btnMinusvalia").click();
 
@@ -65,14 +57,18 @@ public class SeguroSGUITest {
 
 	@Test
 	public void testPotencia() {
+<<<<<<< HEAD
 		//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 		//NO NOS CALCULA BIEN LA SINIESTRABILIDAD, NO LO SUMA AL PRECIO, EN SEGURO SI QUE SE CALCULA BIEN
 		demo.textBox("txtFechaUltimoSiniestro").deleteText();
 		demo.textBox("txtFechaUltimoSiniestro").enterText("10-01-2021");
 
 		//comprobamos que funciona el campo potencia para un valor intermedio (100)
+=======
+		//comprobamos que funciona el campo potencia para un valor en el intervalo bajo (50)
+>>>>>>> 5f2430e5d1ea4fadec477f847d0d64a17a795de8
 		demo.textBox("txtPotencia").deleteText();
-		demo.textBox("txtPotencia").enterText("100");
+		demo.textBox("txtPotencia").enterText("50");
 
 		//el 0 corresponde con TODO_RIESGO
 		demo.comboBox("comboCobertura").selectItem(0);
@@ -176,6 +172,68 @@ public class SeguroSGUITest {
 		demo.button("btnCalcular").requireText("CALCULAR");
 		demo.button("btnCalcular").click();
 
+<<<<<<< HEAD
 		demo.textBox("txtPrecio").requireText("540.0");	
+=======
+		demo.textBox("txtPrecio").requireText("1000.0");
+		
+		//comprobamos que funciona el campo potencia para un valor intermedio (100)
+		demo.textBox("txtPotencia").deleteText();
+		demo.textBox("txtPotencia").enterText("100");
+
+		//demo.radioButton("btnMinusvalia").click();
+
+		demo.button("btnCalcular").click();
+
+		demo.textBox("txtPrecio").requireText("1050.0");
+		
+		//comprobamos que funciona el campo potencia para un valor alto (120)
+		demo.textBox("txtPotencia").deleteText();
+		demo.textBox("txtPotencia").enterText("120");
+
+		//demo.radioButton("btnMinusvalia").click();
+
+		demo.button("btnCalcular").click();
+
+		demo.textBox("txtPrecio").requireText("1200.0");			
+	}
+	
+	@Test
+	public void testCobertura() {
+		//comprobamos que funciona el campo de cobertura con TODO_RIESGO
+				demo.textBox("txtPotencia").deleteText();
+				demo.textBox("txtPotencia").enterText("50");
+
+				demo.textBox("txtFechaUltimoSiniestro").deleteText();
+				demo.textBox("txtFechaUltimoSiniestro").enterText("10-01-2000");
+
+				//el 0 corresponde con TODO_RIESGO
+				demo.comboBox("comboCobertura").selectItem(0);
+
+				demo.button("btnCalcular").click();
+
+				demo.textBox("txtPrecio").requireText("1000.0");
+				
+				//comprobamos que funciona el campo de cobertura con TERCEROS_LUNAS
+
+
+				demo.comboBox("comboCobertura").selectItem("TERCEROS_LUNAS");
+
+
+				demo.button("btnCalcular").click();
+
+				demo.textBox("txtPrecio").requireText("600.0");
+				
+				//comprobamos que funciona el campo de cobertura con TERCEROS
+
+
+				demo.comboBox("comboCobertura").selectItem("TERCEROS");
+
+
+				demo.button("btnCalcular").click();
+
+				demo.textBox("txtPrecio").requireText("400.0");		
+		
+>>>>>>> 5f2430e5d1ea4fadec477f847d0d64a17a795de8
 	}
 }
