@@ -47,12 +47,12 @@ public class Credito extends Tarjeta {
 
 	@Override
 	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {
-		if (x<0)
+		if (x<0) {
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		
-		if (getGastosAcumulados() + x > mCredito)
+		}
+		if (getGastosAcumulados() + x > mCredito) {
 			throw new saldoInsuficienteException("Saldo insuficiente");
-		
+		}
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
 		m.setF(now);
@@ -90,9 +90,9 @@ public class Credito extends Tarjeta {
 		}
 		liq.setI(r);
 	
-		if (r != 0)
+		if (r != 0) {
 			mCuentaAsociada.addMovimiento(liq);
-		
+		}
 		mhistoricoMovimientos.addAll(mMovimientosMensuales);
 		mMovimientosMensuales.clear();
 	}
