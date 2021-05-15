@@ -3,6 +3,17 @@ package es.unican.is2.practica5;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * METRICAS:
+ * 
+ * WMC: en el codigo
+ * CBO: -AFF (Número de clases que dependen de la clase analizada):0
+ * 		-EFF (Número de clases de los que la clase depende):0
+ * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
+ * NOC (Número de subclases inmediatas de una clase dada): 0
+ * CCog: en el codigo
+ */
+
 public class Cliente {
 	
 	public String nombre;
@@ -32,11 +43,11 @@ public class Cliente {
 	
 	public double getSaldoTotal() {
 		double total = 0.0;
-		for (Cuenta c: Cuentas) {  
-			if (c instanceof CuentaAhorro) {
+		for (Cuenta c: Cuentas) {  //+1
+			if (c instanceof CuentaAhorro) { //+2
 				total += ((CuentaAhorro) c).getSaldo();
-			} else if (c instanceof CuentaValores)  {
-				for (Valor v: ((CuentaValores) c).getValores()) {
+			} else if (c instanceof CuentaValores)  { //+2
+				for (Valor v: ((CuentaValores) c).getValores()) { //+3
 					total += v.getCotizacionActual()*v.getNumValores();
 				}
 			}

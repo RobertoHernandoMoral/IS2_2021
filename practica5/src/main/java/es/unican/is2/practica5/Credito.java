@@ -5,6 +5,16 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * METRICAS:
+ * 
+ * WMC: en el codigo
+ * CBO: -AFF (Número de clases que dependen de la clase analizada):0
+ * 		-EFF (Número de clases de los que la clase depende):1
+ * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
+ * NOC (Número de subclases inmediatas de una clase dada): 0
+ * CCog: en el codigo
+ */
 
 public class Credito extends Tarjeta {
 	
@@ -28,7 +38,7 @@ public class Credito extends Tarjeta {
 	 */
 	@Override
 	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
-		if (x<0)
+		if (x<0) //+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		
 		Movimiento m = new Movimiento();
@@ -38,19 +48,19 @@ public class Credito extends Tarjeta {
 		x += x * 0.05; // Añadimos una comisión de un 5%
 		m.setI(-x);
 		
-		if (getGastosAcumulados()+x > mCredito)
+		if (getGastosAcumulados()+x > mCredito) //+1
 			throw new saldoInsuficienteException("Crédito insuficiente");
-		else {
+		else { //+1
 			mMovimientosMensuales.add(m);
 		}
 	}
 
 	@Override
 	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {
-		if (x<0) {
+		if (x<0) { //+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
-		if (getGastosAcumulados() + x > mCredito) {
+		if (getGastosAcumulados() + x > mCredito) { //+1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 		Movimiento m = new Movimiento();
@@ -63,7 +73,7 @@ public class Credito extends Tarjeta {
 	
     public double getGastosAcumulados() {
 		double r = 0.0;
-		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) {
+		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) { //+1
 			Movimiento m = (Movimiento) mMovimientosMensuales.get(i);
 			r += m.getI();
 		}
@@ -84,13 +94,13 @@ public class Credito extends Tarjeta {
 		liq.setF(now);
 		liq.setC("Liquidación de operaciones tarjeta crédito");
 		double r = 0.0;
-		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) {
+		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) { //+1
 			Movimiento m = (Movimiento) mMovimientosMensuales.get(i);
 			r += m.getI();
 		}
 		liq.setI(r);
 	
-		if (r != 0) {
+		if (r != 0) { //+1
 			mCuentaAsociada.addMovimiento(liq);
 		}
 		mhistoricoMovimientos.addAll(mMovimientosMensuales);
