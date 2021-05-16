@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /*
  * METRICAS:
  * 
- * WMC: en el codigo
+ * WMC: 2 (notas en el codigo)
  * CBO: -AFF (Número de clases que dependen de la clase analizada):0
  * 		-EFF (Número de clases de los que la clase depende):1
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
@@ -23,7 +23,7 @@ public class Debito extends Tarjeta {
 	
 	
 	@Override
-	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
+	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
 		if (saldoDiarioDisponible<x) { //+1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
@@ -32,7 +32,7 @@ public class Debito extends Tarjeta {
 	}
 	
 	@Override
-	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {
+	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
 		if (saldoDiarioDisponible<x) { //+1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}

@@ -6,7 +6,7 @@ import java.util.List;
 /*
  * METRICAS:
  * 
- * WMC: en el codigo
+ * WMC: 3 (notas en el codigo)
  * CBO: -AFF (Número de clases que dependen de la clase analizada):0
  * 		-EFF (Número de clases de los que la clase depende):0
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
@@ -41,7 +41,7 @@ public class Cliente {
 		this.localidad = localidad;
 	}
 	
-	public double getSaldoTotal() {
+	public double getSaldoTotal() { //CC=3
 		double total = 0.0;
 		for (Cuenta c: Cuentas) {  //+1
 			if (c instanceof CuentaAhorro) { //+2

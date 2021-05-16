@@ -8,7 +8,7 @@ import java.util.List;
 /*
  * METRICAS:
  * 
- * WMC: en el codigo
+ * WMC: 5 (notas en el codigo)
  * CBO: -AFF (Número de clases que dependen de la clase analizada):0
  * 		-EFF (Número de clases de los que la clase depende):1
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
@@ -31,7 +31,7 @@ public class CuentaAhorro extends Cuenta {
 		limiteDebito = 1000;
 	}
 
-	public void ingresar(double x) throws datoErroneoException {
+	public void ingresar(double x) throws datoErroneoException { //CC=1
 		if (x <= 0) //+1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
@@ -42,7 +42,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
+	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
 		if (x <= 0) //+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		if (getSaldo() < x) //+1
@@ -55,7 +55,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public void ingresar(String concepto, double x) throws datoErroneoException {
+	public void ingresar(String concepto, double x) throws datoErroneoException { //CC=1
 		if (x <= 0) //+1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
@@ -66,7 +66,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException {
+	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
 		if (getSaldo() < x) //+1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		if (x <= 0) //+1
@@ -79,7 +79,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public double getSaldo() {
+	public double getSaldo() { //CC=1
 		double r = 0.0;
 		for (int i = 0; i < this.mMovimientos.size(); i++) { //+1
 			Movimiento m = (Movimiento) mMovimientos.get(i);
