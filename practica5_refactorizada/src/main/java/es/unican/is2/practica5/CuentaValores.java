@@ -2,6 +2,7 @@ package es.unican.is2.practica5;
 
 import java.util.List;
 
+
 /*
  * METRICAS:
  * 
@@ -16,6 +17,7 @@ import java.util.List;
 public class CuentaValores extends Cuenta {
 
 	private List<Valor> valores;
+
 	
 	public CuentaValores(String numCuenta, List<Valor> valores) {
 		super(numCuenta);

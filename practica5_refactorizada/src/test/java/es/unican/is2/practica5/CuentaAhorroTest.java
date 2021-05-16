@@ -13,15 +13,6 @@ import org.junit.Test;
 import es.unican.is2.practica5.*;
 
 
-/*
- * METRICAS:
- * WMC: 2 (notas en el codigo)
- * CBO: -AFF (Número de clases que dependen de la clase analizada):0
- * 		-EFF (Número de clases de los que la clase depende):3
- * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
- * NOC (Número de subclases inmediatas de una clase dada): 0
- * CCog: 13 (notas en el codigo)
- */
 
 public class CuentaAhorroTest {
 	private CuentaAhorro cuentaAhorro;

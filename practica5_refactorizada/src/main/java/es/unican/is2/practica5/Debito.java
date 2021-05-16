@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * 
  * WMC: 2 (notas en el codigo)
  * CBO: -AFF (Número de clases que dependen de la clase analizada):0
- * 		-EFF (Número de clases de los que la clase depende):1
+ * 		-EFF (Número de clases de los que la clase depende):0
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
  * NOC (Número de subclases inmediatas de una clase dada): 0
  * CCog: 2 (notas en el codigo)
@@ -24,18 +24,14 @@ public class Debito extends Tarjeta {
 	
 	@Override
 	public void retirarDinero(double importe) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
-		if (saldoDiarioDisponible<importe) { //+1
-			throw new saldoInsuficienteException("Saldo insuficiente");
-		}
+		compruebaSaldoInsuficiente(importe);
 		this.mCuentaAsociada.retirar("Retirada en cajero automático", importe);
 		saldoDiarioDisponible-=importe;
 	}
 	
 	@Override
 	public void pagoEnEstablecimiento(String datos, double importe) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
-		if (saldoDiarioDisponible<importe) { //+1
-			throw new saldoInsuficienteException("Saldo insuficiente");
-		}
+		compruebaSaldoInsuficiente(importe);
 		this.mCuentaAsociada.retirar("Compra en : " + datos, importe);
 		saldoDiarioDisponible-=importe;
 	}
@@ -55,4 +51,9 @@ public class Debito extends Tarjeta {
 		return mCuentaAsociada;
 	}
 
+	private void compruebaSaldoInsuficiente(double importe) throws saldoInsuficienteException {
+		if (saldoDiarioDisponible<importe) { //+1
+			throw new saldoInsuficienteException("Saldo insuficiente");
+		}
+	}
 }

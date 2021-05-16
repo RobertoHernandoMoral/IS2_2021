@@ -6,18 +6,25 @@ import java.time.LocalDateTime;
  * METRICAS:
  * 
  * WMC: 0 (notas en el codigo)
- * CBO: -AFF (Número de clases que dependen de la clase analizada):0
+ * CBO: -AFF (Número de clases que dependen de la clase analizada):3
  * 		-EFF (Número de clases de los que la clase depende):0
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
  * NOC (Número de subclases inmediatas de una clase dada): 0
  * CCog: 0 (notas en el codigo)
  */
-
 public class Movimiento {
 	private String mConcepto;
 	private LocalDateTime mFecha;
 	private double mImporte;
 
+	public Movimiento() {}
+	
+	public Movimiento(String mConcepto, LocalDateTime mFecha, double mImporte) {
+		this.mConcepto=mConcepto;
+		this.mFecha=mFecha;
+		this.mImporte=mImporte;
+	}
+	
 	public double getImporte() {
 		return mImporte;
 	}

@@ -14,15 +14,6 @@ import es.unican.is2.practica5.CuentaValores;
 import es.unican.is2.practica5.Valor;
 
 
-/*
- * METRICAS:
- * WMC: 0 (notas en el codigo)
- * CBO: -AFF (Número de clases que dependen de la clase analizada):0
- * 		-EFF (Número de clases de los que la clase depende):3
- * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
- * NOC (Número de subclases inmediatas de una clase dada): 0
- * CCog: 0 (notas en el codigo)
- */
 public class CuentaValoresTest {
 	private CuentaValores sut;
 

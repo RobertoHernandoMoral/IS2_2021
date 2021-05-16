@@ -6,9 +6,9 @@ import java.util.List;
 /*
  * METRICAS:
  * 
- * WMC: en el codigo
+ * WMC: 3 (notas en el codigo)
  * CBO: -AFF (Número de clases que dependen de la clase analizada):0
- * 		-EFF (Número de clases de los que la clase depende):0
+ * 		-EFF (Número de clases de los que la clase depende):2
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
  * NOC (Número de subclases inmediatas de una clase dada): 0
  * CCog: 6 (notas en el codigo)
@@ -16,16 +16,21 @@ import java.util.List;
 
 public class Cliente {
 	
-	public DatosCliente datos;
-	
+	public String nombre;
+	public Direccion direccion;
+	public String telefono;
+	public String dni;
     private List<Cuenta> Cuentas = new LinkedList<Cuenta>();
 
- 	public Cliente(DatosCliente datos) {  
-		this.datos=datos;
+ 	public Cliente(String nombre, Direccion direccion, String telefono, String dni) {  
+ 		this.nombre = nombre;
+ 		this.direccion=direccion;
+ 		this.telefono = telefono;
+		this.dni = dni;
 	}
 	
-	public void cambiaDireccion(String calle, String zip, String localidad) {
-		datos.cambiaDireccion(calle, zip, localidad);
+	public void cambiaDireccion(Direccion nuevaDireccion) {
+		this.direccion=nuevaDireccion;
 	}
 	
 	public double getSaldoTotal() { //CC=3 CCog= 6
@@ -34,8 +39,8 @@ public class Cliente {
 			if (cuenta instanceof CuentaAhorro) { //CC=2
 				total += ((CuentaAhorro) cuenta).getSaldo();
 			} else if (cuenta instanceof CuentaValores)  { //CC=2
-				for (Valor v: ((CuentaValores) cuenta).getValores()) { //CC=3
-					total += v.getCotizacionActual()*v.getNumValores();
+				for (Valor valor: ((CuentaValores) cuenta).getValores()) { //CC=3
+					total += valor.getCotizacionActual()*valor.getNumValores();
 				}
 			}
 		}
