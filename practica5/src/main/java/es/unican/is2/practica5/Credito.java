@@ -13,7 +13,7 @@ import java.util.List;
  * 		-EFF (Número de clases de los que la clase depende):1
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
  * NOC (Número de subclases inmediatas de una clase dada): 0
- * CCog: en el codigo
+ * CCog: 5 (notas en el codigo)
  */
 
 public class Credito extends Tarjeta {
@@ -37,7 +37,7 @@ public class Credito extends Tarjeta {
 	 * @throws datoErroneoException
 	 */
 	@Override
-	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
+	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
 		if (x<0) //+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		
@@ -56,7 +56,7 @@ public class Credito extends Tarjeta {
 	}
 
 	@Override
-	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
+	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
 		if (x<0) { //+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
@@ -71,7 +71,7 @@ public class Credito extends Tarjeta {
 		mMovimientosMensuales.add(m);
 	}
 	
-    public double getGastosAcumulados() { //CC=1
+    public double getGastosAcumulados() { //CC=1 CCog=1
 		double r = 0.0;
 		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) { //+1
 			Movimiento m = (Movimiento) mMovimientosMensuales.get(i);
@@ -88,7 +88,7 @@ public class Credito extends Tarjeta {
 	/**
 	 * Método que se invoca automáticamente el día 1 de cada mes
 	 */
-	public void liquidar() { //CC=1
+	public void liquidar() { //CC=1 CCog=2
 		Movimiento liq = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
 		liq.setF(now);

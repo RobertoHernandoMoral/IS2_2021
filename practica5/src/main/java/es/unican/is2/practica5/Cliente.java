@@ -11,7 +11,7 @@ import java.util.List;
  * 		-EFF (Número de clases de los que la clase depende):0
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 0
  * NOC (Número de subclases inmediatas de una clase dada): 0
- * CCog: en el codigo
+ * CCog: 6 (notas en el codigo)
  */
 
 public class Cliente {
@@ -41,7 +41,7 @@ public class Cliente {
 		this.localidad = localidad;
 	}
 	
-	public double getSaldoTotal() { //CC=3
+	public double getSaldoTotal() { //CC=3 CCog= 6
 		double total = 0.0;
 		for (Cuenta c: Cuentas) {  //+1
 			if (c instanceof CuentaAhorro) { //+2

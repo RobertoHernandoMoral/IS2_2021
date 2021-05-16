@@ -13,7 +13,7 @@ import java.util.List;
  * 		-EFF (Número de clases de los que la clase depende):1
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
  * NOC (Número de subclases inmediatas de una clase dada): 0
- * CCog: en el codigo
+ * CCog: 6 (notas en el codigo)
  */
 
 public class CuentaAhorro extends Cuenta {
@@ -31,7 +31,7 @@ public class CuentaAhorro extends Cuenta {
 		limiteDebito = 1000;
 	}
 
-	public void ingresar(double x) throws datoErroneoException { //CC=1
+	public void ingresar(double x) throws datoErroneoException { //CC=1 CCog=1
 		if (x <= 0) //+1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
@@ -42,7 +42,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
+	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
 		if (x <= 0) //+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		if (getSaldo() < x) //+1
@@ -55,7 +55,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public void ingresar(String concepto, double x) throws datoErroneoException { //CC=1
+	public void ingresar(String concepto, double x) throws datoErroneoException { //CC=1 CCog=1
 		if (x <= 0) //+1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
@@ -66,7 +66,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException { //CC=1
+	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=2
 		if (getSaldo() < x) //+1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		if (x <= 0) //+1
@@ -79,7 +79,7 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(m);
 	}
 
-	public double getSaldo() { //CC=1
+	public double getSaldo() { //CC=1 CCog=1
 		double r = 0.0;
 		for (int i = 0; i < this.mMovimientos.size(); i++) { //+1
 			Movimiento m = (Movimiento) mMovimientos.get(i);

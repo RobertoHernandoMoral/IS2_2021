@@ -10,7 +10,7 @@ import java.util.List;
  * 		-EFF (Número de clases de los que la clase depende):1
  * DIT (En una jerarquía de clases, longitud máxima desde una subclase hasta la clase raíz): 1
  * NOC (Número de subclases inmediatas de una clase dada): 0
- * CCog: en el codigo
+ * CCog: 0 (notas en el codigo)
  */
 
 public class CuentaValores extends Cuenta {
