@@ -1,8 +1,7 @@
 package es.unican.is2.practica5;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
+
 
 import static org.junit.Assert.*;
 
@@ -10,7 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import es.unican.is2.practica5.*;
+
 
 
 
@@ -45,14 +44,14 @@ public class CuentaAhorroTest {
 	
 	@Test
 	public void testGetSaldoYAddMovimiento() {
-		assertTrue(cuentaAhorro.getSaldo(), 0, DELTA);	
+		assertEquals(cuentaAhorro.getSaldo(), 0, DELTA);	
 
 		cuentaAhorro.addMovimiento(movimiento1);
-		assertTrue(cuentaAhorro.getSaldo(), 100, DELTA);
+		assertEquals(cuentaAhorro.getSaldo(), 100, DELTA);
 		
 		cuentaAhorro.addMovimiento(movimiento2);
 		cuentaAhorro.addMovimiento(movimiento3);
-		assertTrue(cuentaAhorro.getSaldo()==1800);
+		assertEquals(cuentaAhorro.getSaldo(),1800,DELTA);
 	}
 	
 	@Test
@@ -70,8 +69,8 @@ public class CuentaAhorroTest {
 		
 		try { 								//+1
 			cuentaAhorro.retirar(50);
-			assertTrue(cuentaAhorro.getSaldo()==50);
-			assertTrue(cuentaAhorro.getMovimientos().size()==2);
+			assertEquals(cuentaAhorro.getSaldo(),50,DELTA);
+			assertEquals(cuentaAhorro.getMovimientos().size(),2, DELTA);
 			assertEquals(cuentaAhorro.getMovimientos().get(1).getConcepto(), ("Retirada de efectivo"));
 		} catch (datoErroneoException e) {			//+1
 			fail("No debería lanzar DatoErroneoException");
@@ -104,13 +103,13 @@ public class CuentaAhorroTest {
 		// Test ingresar el limite
 		try {												//+1
 			cuentaAhorro.ingresar(0.01);
-			assertTrue(cuentaAhorro.getSaldo()==0.01);
-			assertTrue(cuentaAhorro.getMovimientos().size()==1);
+			assertEquals(cuentaAhorro.getSaldo(), 0.01, DELTA);
+			assertEquals(cuentaAhorro.getMovimientos().size(),1);
 			assertEquals(cuentaAhorro.getMovimientos().get(0).getConcepto(), ("Ingreso en efectivo"));
 			
 			cuentaAhorro.ingresar(100);
-			assertTrue(cuentaAhorro.getSaldo()==100.01);
-			assertTrue(cuentaAhorro.getMovimientos().size()==2);
+			assertEquals(cuentaAhorro.getSaldo(),100.01, DELTA);
+			assertEquals(cuentaAhorro.getMovimientos().size(),2);
 			
 		} catch (datoErroneoException e) {					//+1
 			fail("No debería lanzar la excepción");
