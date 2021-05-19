@@ -34,13 +34,13 @@ public class Credito extends Tarjeta {
 	/**
 	 * Retirada de dinero en cajero con la tarjeta
 	 * @param importe Cantidad a retirar. Se aplica una comisión del 5%.
-	 * @throws saldoInsuficienteException
-	 * @throws datoErroneoException
+	 * @throws SaldoInsuficienteException
+	 * @throws DatoErroneoException
 	 */
 	@Override
-	public void retirarDinero(double importe) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
+	public void retirarDinero(double importe) throws SaldoInsuficienteException, DatoErroneoException { //CC=1 CCog=1
 		if (importe<0) //+1
-			throw new datoErroneoException("No se puede retirar una cantidad negativa");
+			throw new DatoErroneoException("No se puede retirar una cantidad negativa");
 		
 		Movimiento movimiento = new Movimiento("Retirada en cajero automático", LocalDateTime.now(), -importe );
 		
@@ -48,19 +48,19 @@ public class Credito extends Tarjeta {
 
 		
 		if (getGastosAcumulados()+importe > mCredito) //+1
-			throw new saldoInsuficienteException("Crédito insuficiente");
+			throw new SaldoInsuficienteException("Crédito insuficiente");
 		else { //+1
 			mMovimientosMensuales.add(movimiento);
 		}
 	}
 
 	@Override
-	public void pagoEnEstablecimiento(String datos, double importe) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
+	public void pagoEnEstablecimiento(String datos, double importe) throws SaldoInsuficienteException, DatoErroneoException { //CC=1 CCog=1
 		if (importe<0) { //+1
-			throw new datoErroneoException("No se puede retirar una cantidad negativa");
+			throw new DatoErroneoException("No se puede retirar una cantidad negativa");
 		}
 		if (getGastosAcumulados() + importe > mCredito) { //+1
-			throw new saldoInsuficienteException("Saldo insuficiente");
+			throw new SaldoInsuficienteException("Saldo insuficiente");
 		}
 		Movimiento movimiento = new Movimiento("Compra a crédito en: " + datos, LocalDateTime.now(), importe);
 		mMovimientosMensuales.add(movimiento);
@@ -69,7 +69,7 @@ public class Credito extends Tarjeta {
     public double getGastosAcumulados() { //CC=1 CCog=1
 		double total = 0.0;
 		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) { //+1
-			Movimiento movimiento = (Movimiento) mMovimientosMensuales.get(i);
+			Movimiento movimiento =  mMovimientosMensuales.get(i);
 			total += movimiento.getImporte();
 		}
 		return -total;

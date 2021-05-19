@@ -16,7 +16,7 @@ public abstract class Cuenta {
 	private String numCuenta;
 
 	
-	public Cuenta(String numCuenta) {
+	protected Cuenta(String numCuenta) {
 		this.numCuenta = numCuenta;
 	}
 	

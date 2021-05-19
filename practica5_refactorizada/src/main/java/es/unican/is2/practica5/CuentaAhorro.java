@@ -31,13 +31,13 @@ public class CuentaAhorro extends Cuenta {
 		limiteDebito = 1000;
 	}
 
-	public void ingresar(double importe) throws datoErroneoException { //CC=0 CCog=0
+	public void ingresar(double importe) throws DatoErroneoException { //CC=0 CCog=0
 		compruebaImporteNegativo(importe);
 
 		this.mMovimientos.add(new Movimiento("Ingreso en efectivo", LocalDateTime.now(),importe));
 	}
 
-	public void retirar(double importe) throws saldoInsuficienteException, datoErroneoException { //CC=0 CCog=0
+	public void retirar(double importe) throws SaldoInsuficienteException, DatoErroneoException { //CC=0 CCog=0
 		compruebaImporteNegativo(importe);
 		compruebaSaldoInsuficiente(importe);
 		
@@ -45,13 +45,13 @@ public class CuentaAhorro extends Cuenta {
 		this.mMovimientos.add(new Movimiento("Retirada de efectivo",LocalDateTime.now(),importe));
 	}
 
-	public void ingresar(String concepto, double importe) throws datoErroneoException { //CC=0 CCog=0
+	public void ingresar(String concepto, double importe) throws DatoErroneoException { //CC=0 CCog=0
 		compruebaImporteNegativo(importe);
 		
 		this.mMovimientos.add(new Movimiento(concepto,LocalDateTime.now(),importe));
 	}
 
-	public void retirar(String concepto, double importe) throws saldoInsuficienteException, datoErroneoException { //CC=0 CCog=0
+	public void retirar(String concepto, double importe) throws SaldoInsuficienteException, DatoErroneoException { //CC=0 CCog=0
 		compruebaSaldoInsuficiente(importe);
 		compruebaImporteNegativo(importe);
 		
@@ -61,7 +61,7 @@ public class CuentaAhorro extends Cuenta {
 	public double getSaldo() { //CC=1 CCog=1
 		double total = 0.0;
 		for (int i = 0; i < this.mMovimientos.size(); i++) { //+1
-			Movimiento movimiento = (Movimiento) mMovimientos.get(i);
+			Movimiento movimiento =  mMovimientos.get(i);
 			total += movimiento.getImporte();
 		}
 		return total;
@@ -90,15 +90,15 @@ public class CuentaAhorro extends Cuenta {
 	/**
 	 * Comprueba si el importe es negativo y lanza una excepcion si es asi
 	 * @param importe
-	 * @throws datoErroneoException
+	 * @throws DatoErroneoException
 	 */
-	private void compruebaImporteNegativo(double importe) throws datoErroneoException{ //CC=1 Ccog=1
+	private void compruebaImporteNegativo(double importe) throws DatoErroneoException{ //CC=1 Ccog=1
 		if (importe <= 0) //+1
-			throw new datoErroneoException("No se puede operar con una cantidad negativa");
+			throw new DatoErroneoException("No se puede operar con una cantidad negativa");
 	}
 	
-	private void compruebaSaldoInsuficiente(double saldo) throws saldoInsuficienteException{ //CC=1 Ccog=1
+	private void compruebaSaldoInsuficiente(double saldo) throws SaldoInsuficienteException{ //CC=1 Ccog=1
 		if (getSaldo() < saldo) //+1
-			throw new saldoInsuficienteException("Saldo insuficiente");
+			throw new SaldoInsuficienteException("Saldo insuficiente");
 	}
 }

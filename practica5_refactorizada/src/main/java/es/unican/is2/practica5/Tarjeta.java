@@ -11,10 +11,11 @@ package es.unican.is2.practica5;
  * CCog: 0 (notas en el codigo)
  */
 public abstract class Tarjeta {
-	protected String mNumero, mTitular;		
+	protected String mNumero;
+	protected String mTitular;		
 	protected CuentaAhorro mCuentaAsociada;
 
-	public Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro) {
+	protected Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro) {
 		mNumero = numero;
 		mTitular = titular;
 		mCuentaAsociada = cuentaAhorro;
@@ -23,20 +24,20 @@ public abstract class Tarjeta {
 	/**
 	 * Retirada de dinero en cajero con la tarjeta
 	 * @param importe Cantidad a retirar. 
-	 * @throws saldoInsuficienteException
-	 * @throws datoErroneoException
+	 * @throws SaldoInsuficienteException
+	 * @throws DatoErroneoException
 	 */
-	public abstract void retirarDinero(double importe) throws saldoInsuficienteException, datoErroneoException;
+	public abstract void retirarDinero(double importe) throws SaldoInsuficienteException, DatoErroneoException;
 
 	/**
 	 * Pago en establecimiento con la tarjeta
 	 * @param datos Concepto del pago
 	 * @param importe Cantidada a pagar
-	 * @throws saldoInsuficienteException
-	 * @throws datoErroneoException
+	 * @throws SaldoInsuficienteException
+	 * @throws DatoErroneoException
 	 */
 	public abstract void pagoEnEstablecimiento(String datos, double importe)
-			throws saldoInsuficienteException, datoErroneoException;
+			throws SaldoInsuficienteException, DatoErroneoException;
 	
 	
 }

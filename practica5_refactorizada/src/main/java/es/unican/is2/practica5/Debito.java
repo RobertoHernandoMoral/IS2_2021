@@ -23,14 +23,14 @@ public class Debito extends Tarjeta {
 	
 	
 	@Override
-	public void retirarDinero(double importe) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
+	public void retirarDinero(double importe) throws SaldoInsuficienteException, DatoErroneoException { //CC=1 CCog=1
 		compruebaSaldoInsuficiente(importe);
 		this.mCuentaAsociada.retirar("Retirada en cajero automático", importe);
 		saldoDiarioDisponible-=importe;
 	}
 	
 	@Override
-	public void pagoEnEstablecimiento(String datos, double importe) throws saldoInsuficienteException, datoErroneoException { //CC=1 CCog=1
+	public void pagoEnEstablecimiento(String datos, double importe) throws SaldoInsuficienteException, DatoErroneoException { //CC=1 CCog=1
 		compruebaSaldoInsuficiente(importe);
 		this.mCuentaAsociada.retirar("Compra en : " + datos, importe);
 		saldoDiarioDisponible-=importe;
@@ -51,9 +51,9 @@ public class Debito extends Tarjeta {
 		return mCuentaAsociada;
 	}
 
-	private void compruebaSaldoInsuficiente(double importe) throws saldoInsuficienteException {
+	private void compruebaSaldoInsuficiente(double importe) throws SaldoInsuficienteException {
 		if (saldoDiarioDisponible<importe) { //+1
-			throw new saldoInsuficienteException("Saldo insuficiente");
+			throw new SaldoInsuficienteException("Saldo insuficiente");
 		}
 	}
 }

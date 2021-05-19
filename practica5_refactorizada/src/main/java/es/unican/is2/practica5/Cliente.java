@@ -20,7 +20,7 @@ public class Cliente {
 	private Direccion direccion;
 	private String telefono;
 	private String dni;
-    private List<Cuenta> Cuentas = new LinkedList<Cuenta>();
+    private List<Cuenta> cuentas = new LinkedList<Cuenta>();
 
  	public Cliente(String nombre, Direccion direccion, String telefono, String dni) {  
  		this.nombre = nombre;
@@ -35,7 +35,7 @@ public class Cliente {
 	
 	public double getSaldoTotal() { //CC=3 CCog= 6
 		double total = 0.0;
-		for (Cuenta cuenta: Cuentas) {  //CC=1
+		for (Cuenta cuenta: cuentas) {  //CC=1
 			if (cuenta instanceof CuentaAhorro) { //CC=2
 				total += ((CuentaAhorro) cuenta).getSaldo();
 			} else if (cuenta instanceof CuentaValores)  { //CC=2
@@ -48,7 +48,7 @@ public class Cliente {
 	}
 	
 	public void anhadeCuenta(Cuenta cuenta) {
-		Cuentas.add(cuenta);
+		cuentas.add(cuenta);
 	}
 	
 }

@@ -10,12 +10,10 @@ package es.unican.is2.practica5;
  * CCog: 0 (notas en el codigo)
  */
 
-
 @SuppressWarnings("serial")
-public class datoErroneoException extends RuntimeException {
-	
-	public datoErroneoException (String mensaje) {
+public class SaldoInsuficienteException extends RuntimeException {
+
+	public SaldoInsuficienteException (String mensaje) {
 		super(mensaje);
 	}
-
 }
