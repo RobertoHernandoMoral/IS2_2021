@@ -2,7 +2,38 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>es.unican.is2</groupId>
   <artifactId>practica5_refactorizada</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<sonar.projectKey>Practica5-Refactorizada</sonar.projectKey>
+		<sonar.projectName>Practica5-SinRefactorizada</sonar.projectName>
+	</properties>
+  
+  
   <name>Practica 5 (Refactorizada)</name>
   <description>Copia de la practica original con refactorizaciones del codigo</description>
 </project>
