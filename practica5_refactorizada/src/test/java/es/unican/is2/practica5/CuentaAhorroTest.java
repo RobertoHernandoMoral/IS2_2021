@@ -35,23 +35,23 @@ public class CuentaAhorroTest {
 
 	@Test
 	public void testConstructor() {
-		assertEquals(cuentaAhorro.getCaducidadDebito(), (LocalDate.now().plusYears(3)));
-		assertEquals(cuentaAhorro.getCaducidadCredito(), (LocalDate.now().plusYears(4)));
-		assertEquals(cuentaAhorro.getLimiteDebito(), 1000, DELTA);
-		assertEquals(cuentaAhorro.getMovimientos().size(), 0, DELTA);
-		assertEquals(cuentaAhorro.getNumCuenta(), ("794311"));
+		assertEquals(LocalDate.now().plusYears(3), cuentaAhorro.getCaducidadDebito());
+		assertEquals(LocalDate.now().plusYears(4), cuentaAhorro.getCaducidadCredito());
+		assertEquals( 1000, cuentaAhorro.getLimiteDebito(), DELTA);
+		assertEquals( 0, cuentaAhorro.getMovimientos().size(), DELTA);
+		assertEquals(("794311"), cuentaAhorro.getNumCuenta());
 	}
 	
 	@Test
 	public void testGetSaldoYAddMovimiento() {
-		assertEquals(cuentaAhorro.getSaldo(), 0, DELTA);	
+		assertEquals( 0,cuentaAhorro.getSaldo(), DELTA);	
 
 		cuentaAhorro.addMovimiento(movimiento1);
-		assertEquals(cuentaAhorro.getSaldo(), 100, DELTA);
+		assertEquals(100, cuentaAhorro.getSaldo(), DELTA);
 		
 		cuentaAhorro.addMovimiento(movimiento2);
 		cuentaAhorro.addMovimiento(movimiento3);
-		assertEquals(cuentaAhorro.getSaldo(),1800,DELTA);
+		assertEquals(1800,cuentaAhorro.getSaldo(),DELTA);
 	}
 	
 	@Test
@@ -69,9 +69,9 @@ public class CuentaAhorroTest {
 		
 		try { 								//+1
 			cuentaAhorro.retirar(50);
-			assertEquals(cuentaAhorro.getSaldo(),50,DELTA);
-			assertEquals(cuentaAhorro.getMovimientos().size(),2, DELTA);
-			assertEquals(cuentaAhorro.getMovimientos().get(1).getConcepto(), ("Retirada de efectivo"));
+			assertEquals(50, cuentaAhorro.getSaldo(),DELTA);
+			assertEquals(2, cuentaAhorro.getMovimientos().size(), DELTA);
+			assertEquals(("Retirada de efectivo"), cuentaAhorro.getMovimientos().get(1).getConcepto());
 		} catch (datoErroneoException e) {			//+1
 			fail("No debería lanzar DatoErroneoException");
 		} catch (saldoInsuficienteException e) {	//+1
@@ -103,13 +103,13 @@ public class CuentaAhorroTest {
 		// Test ingresar el limite
 		try {												//+1
 			cuentaAhorro.ingresar(0.01);
-			assertEquals(cuentaAhorro.getSaldo(), 0.01, DELTA);
-			assertEquals(cuentaAhorro.getMovimientos().size(),1);
-			assertEquals(cuentaAhorro.getMovimientos().get(0).getConcepto(), ("Ingreso en efectivo"));
+			assertEquals(0.01 ,cuentaAhorro.getSaldo(), DELTA);
+			assertEquals(1, cuentaAhorro.getMovimientos().size());
+			assertEquals(("Ingreso en efectivo"), cuentaAhorro.getMovimientos().get(0).getConcepto());
 			
 			cuentaAhorro.ingresar(100);
-			assertEquals(cuentaAhorro.getSaldo(),100.01, DELTA);
-			assertEquals(cuentaAhorro.getMovimientos().size(),2);
+			assertEquals(100.01,cuentaAhorro.getSaldo(), DELTA);
+			assertEquals(2, cuentaAhorro.getMovimientos().size());
 			
 		} catch (datoErroneoException e) {					//+1
 			fail("No debería lanzar la excepción");

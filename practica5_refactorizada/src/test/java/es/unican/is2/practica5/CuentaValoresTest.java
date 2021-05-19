@@ -26,13 +26,13 @@ public class CuentaValoresTest {
 	
 	@Test
 	public void testConstructor() {
-		assertEquals(sut.getNumCuenta(), ("794311"));
-		assertEquals(sut.getValores().size(),2);
+		assertEquals(("794311"), sut.getNumCuenta());
+		assertEquals(2, sut.getValores().size());
 	}
 	
 	@Test
 	public void testAnhadeValor() {
 		sut.anhadeValor(new Valor("Telepizza", 25, 1.05));
-		assertEquals(sut.getValores().size(),3);
+		assertEquals(3, sut.getValores().size());
 	}
 }
