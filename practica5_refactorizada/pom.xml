@@ -30,7 +30,7 @@
 	</build>
 	<properties>
 		<sonar.projectKey>Practica5-Refactorizada</sonar.projectKey>
-		<sonar.projectName>Practica5-SinRefactorizada</sonar.projectName>
+		<sonar.projectName>Practica5-Refactorizada</sonar.projectName>
 	</properties>
   
   
