@@ -3,9 +3,9 @@ package es.unican.is2.practica5;
 public class Direccion {
 
 	
-	public String calle;
-	public String zip;
-	public String localidad;
+	private String calle;
+	private String zip;
+	private String localidad;
 	
 	
 	

@@ -1,5 +1,6 @@
 package es.unican.is2.practica5;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
@@ -27,7 +28,7 @@ public class CuentaValoresTest {
 	
 	@Test
 	public void testConstructor() {
-		assertTrue(sut.getNumCuenta().equals("794311"));
+		assertEquals(sut.getNumCuenta(), ("794311"));
 		assertTrue(sut.getValores().size()==2);
 	}
 	

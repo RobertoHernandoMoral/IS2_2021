@@ -16,10 +16,10 @@ import java.util.List;
 
 public class Cliente {
 	
-	public String nombre;
-	public Direccion direccion;
-	public String telefono;
-	public String dni;
+	private String nombre;
+	private Direccion direccion;
+	private String telefono;
+	private String dni;
     private List<Cuenta> Cuentas = new LinkedList<Cuenta>();
 
  	public Cliente(String nombre, Direccion direccion, String telefono, String dni) {  

@@ -17,6 +17,7 @@ import es.unican.is2.practica5.*;
 public class CuentaAhorroTest {
 	private CuentaAhorro cuentaAhorro;
 	private static Movimiento movimiento1, movimiento2, movimiento3;
+	private static final double DELTA = 1e-15;
 	
 	@BeforeClass
 	public static void inicializarMovimientos() {
@@ -35,19 +36,19 @@ public class CuentaAhorroTest {
 
 	@Test
 	public void testConstructor() {
-		assertTrue(cuentaAhorro.getCaducidadDebito().equals(LocalDate.now().plusYears(3)));
-		assertTrue(cuentaAhorro.getCaducidadCredito().equals(LocalDate.now().plusYears(4)));
-		assertTrue(cuentaAhorro.getLimiteDebito()==1000);
-		assertTrue(cuentaAhorro.getMovimientos().size()==0);
-		assertTrue(cuentaAhorro.getNumCuenta().equals("794311"));
+		assertEquals(cuentaAhorro.getCaducidadDebito(), (LocalDate.now().plusYears(3)));
+		assertEquals(cuentaAhorro.getCaducidadCredito(), (LocalDate.now().plusYears(4)));
+		assertEquals(cuentaAhorro.getLimiteDebito(), 1000, DELTA);
+		assertEquals(cuentaAhorro.getMovimientos().size(), 0, DELTA);
+		assertEquals(cuentaAhorro.getNumCuenta(), ("794311"));
 	}
 	
 	@Test
 	public void testGetSaldoYAddMovimiento() {
-		assertTrue(cuentaAhorro.getSaldo()==0);	
+		assertTrue(cuentaAhorro.getSaldo(), 0, DELTA);	
 
 		cuentaAhorro.addMovimiento(movimiento1);
-		assertTrue(cuentaAhorro.getSaldo() == 100);
+		assertTrue(cuentaAhorro.getSaldo(), 100, DELTA);
 		
 		cuentaAhorro.addMovimiento(movimiento2);
 		cuentaAhorro.addMovimiento(movimiento3);
@@ -71,7 +72,7 @@ public class CuentaAhorroTest {
 			cuentaAhorro.retirar(50);
 			assertTrue(cuentaAhorro.getSaldo()==50);
 			assertTrue(cuentaAhorro.getMovimientos().size()==2);
-			assertTrue(cuentaAhorro.getMovimientos().get(1).getConcepto().equals("Retirada de efectivo"));
+			assertEquals(cuentaAhorro.getMovimientos().get(1).getConcepto(), ("Retirada de efectivo"));
 		} catch (datoErroneoException e) {			//+1
 			fail("No debería lanzar DatoErroneoException");
 		} catch (saldoInsuficienteException e) {	//+1
@@ -105,7 +106,7 @@ public class CuentaAhorroTest {
 			cuentaAhorro.ingresar(0.01);
 			assertTrue(cuentaAhorro.getSaldo()==0.01);
 			assertTrue(cuentaAhorro.getMovimientos().size()==1);
-			assertTrue(cuentaAhorro.getMovimientos().get(0).getConcepto().equals("Ingreso en efectivo"));
+			assertEquals(cuentaAhorro.getMovimientos().get(0).getConcepto(), ("Ingreso en efectivo"));
 			
 			cuentaAhorro.ingresar(100);
 			assertTrue(cuentaAhorro.getSaldo()==100.01);
