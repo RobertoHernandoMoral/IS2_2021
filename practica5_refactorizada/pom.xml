@@ -33,6 +33,13 @@
 		<sonar.projectName>Practica5-Refactorizada</sonar.projectName>
 	</properties>
   
+  <dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+  </dependencies>
   
   <name>Practica 5 (Refactorizada)</name>
   <description>Copia de la practica original con refactorizaciones del codigo</description>
